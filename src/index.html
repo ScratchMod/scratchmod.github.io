@@ -37,7 +37,11 @@
             <p><i>NOT FINISHED YET</i></p>
             	
             <p>these are scratch and mods</p>
-            <button type="button" onclick="location.href='https://scratch.mit.edu'">Scratch 3.0</button>
+            <button type="button" onclick="openLinkInNewTab()">Scratch 3.0</button><script>
+                let openLinkInNewTab = () => {
+                    window.open("https://scratch.mit.edu","_blank");
+                }
+            </script>
         </main>
     </body>
 </html>
