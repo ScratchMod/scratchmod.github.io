@@ -31,7 +31,7 @@ button3{
     border: black;
     border-color: black;
     border-radius: 5%;
-    position: absolute;
+    position: absolute - (0, 10);
     transform: translate(-50%, 50%);
     top: 50%;
     left: 50%;
