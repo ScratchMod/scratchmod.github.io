@@ -136,11 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const childY = childPos.y * 150 + 25;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                const startXOffset = -18;
+                const endXOffset = -18;
                 const startYOffset = 18;
                 const endYOffset = 18;
                 const curveOffset = 15;
 
-                const d = `M${parentX},${parentY + startYOffset} C${parentX},${parentY + startYOffset + curveOffset} ${childX},${childY - endYOffset - curveOffset} ${childX},${childY - endYOffset}`;
+                const d = `M${parentX + startXOffset},${parentY + startYOffset} C${parentX + startXOffset},${parentY + startYOffset + curveOffset} ${childX - endXOffset},${childY - endYOffset - curveOffset} ${childX - endXOffset},${childY - endYOffset}`;
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#2a7ae2");
                 path.setAttribute("stroke-width", "2");
