@@ -98,18 +98,17 @@ function buildTree() {
 
 function drawConnections() {
     const group = document.getElementById("connections-group");
-    while (group.firstChild) group.removeChild(group.firstChild);
+    group.innerHTML = "";
+
+    const containerRect = treeContainer.getBoundingClientRect();
 
     nodePositions.forEach((parentDiv, parentMod) => {
         const parentEl = nodePositions.get(parentMod);
-        const parentBox = parentEl.getBoundingClientRect();
 
         for (const key in parentMod.children) {
             const childMod = parentMod.children[key];
             const childEl = nodePositions.get(childMod);
             if (!childEl) continue;
-
-            const childBox = childEl.getBoundingClientRect();
 
             const startX = parentEl.offsetLeft + parentEl.offsetWidth / 2;
             const startY = parentEl.offsetTop + parentEl.offsetHeight;
@@ -123,6 +122,7 @@ function drawConnections() {
                 C${startX},${startY + curveOffset}
                 ${endX},${endY - curveOffset}
                 ${endX},${endY}`;
+
             path.setAttribute("d", d);
             path.setAttribute("stroke", "#2a7ae2");
             path.setAttribute("stroke-width", "2");
@@ -132,10 +132,9 @@ function drawConnections() {
         }
     });
 
-    const rect = treeContainer.getBoundingClientRect();
     const svg = document.getElementById("connections");
-    svg.setAttribute("width", rect.width);
-    svg.setAttribute("height", rect.height);
+    svg.setAttribute("width", treeContainer.scrollWidth);
+    svg.setAttribute("height", treeContainer.scrollHeight);
 }
 
 let scale = 1;

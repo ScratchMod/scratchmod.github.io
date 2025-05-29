@@ -41,7 +41,6 @@
             #tree-container {
                 position: absolute;
                 display: inline-block;
-                margin: auto;
                 padding: 20px;
                 background: white;
                 border-radius: 8px;
@@ -98,13 +97,13 @@
             .mod-info a:hover {
                 text-decoration: underline;
             }
-            svg#connections {
+            #connections {
                 position: absolute;
                 top: 0;
                 left: 0;
+                z-index: 0;
                 pointer-events: none;
                 overflow: visible;
-                z-index: 0;
             }
         </style>
     </head>
@@ -114,10 +113,11 @@
         </header>
         <div id="gap" style="height: 18px;"></div>
         <div id="tree-wrapper">
-            <div id="tree-container"></div>
-            <svg id="connections">
-                <g id="connections-group"></g>
-            </svg>
+            <div id="tree-container">
+                <svg id="connections">
+                    <g id="connections-group"></g>
+                </svg>
+            </div>
         </div>
     </body>
 </html>
