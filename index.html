@@ -9,6 +9,7 @@
                 margin: 0;
                 padding: 0;
                 height: 100%;
+                overflow: hidden;
             }
 
             body {
@@ -33,22 +34,21 @@
                 background-color: transparent;
             }
             #tree-wrapper {
-                position: relative;
                 width: 100%;
-                height: 100vh;
-                overflow: auto;
+                height: calc(100vh - 60px);
+                overflow: hidden;
+                position: relative;
             }
             #tree-container {
                 position: absolute;
-                display: inline-block;
-                margin: auto;
+                top: 0;
+                left: 0;
+                transform-origin: 0 0;
                 padding: 20px;
                 background: white;
                 border-radius: 8px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                transform-origin: 0 0;
                 cursor: grab;
-                z-index: 1;
             }
             .tree-level {
                 display: flex;
@@ -114,8 +114,8 @@
         </header>
         <div id="gap" style="height: 18px;"></div>
         <div id="tree-wrapper">
-            <div id="tree-container"></div>
             <svg id="connections"></svg>
+            <div id="tree-container"></div>
         </div>
     </body>
 </html>
