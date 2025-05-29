@@ -97,31 +97,25 @@ function buildTree() {
 }
 
 function drawConnections() {
-    const rect = treeContainer.getBoundingClientRect();
-    svg.setAttribute("width", rect.width);
-    svg.setAttribute("height", rect.height);
-    svg.style.width = rect.width + "px";
-    svg.style.height = rect.height + "px";
-    svg.style.top = rect.top + window.scrollY + "px";
-    svg.style.left = rect.left + window.scrollX + "px";
-
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    const group = document.getElementById("connections-group");
+    while (group.firstChild) group.removeChild(group.firstChild);
 
     nodePositions.forEach((parentDiv, parentMod) => {
         const parentEl = nodePositions.get(parentMod);
-        const parentRect = parentEl.getBoundingClientRect();
+        const parentBox = parentEl.getBoundingClientRect();
 
         for (const key in parentMod.children) {
             const childMod = parentMod.children[key];
             const childEl = nodePositions.get(childMod);
             if (!childEl) continue;
-            const childRect = childEl.getBoundingClientRect();
 
-            const startX = parentRect.left + parentRect.width / 2 - rect.left;
-            const startY = parentRect.bottom - rect.top;
+            const childBox = childEl.getBoundingClientRect();
 
-            const endX = childRect.left + childRect.width / 2 - rect.left;
-            const endY = childRect.top - rect.top;
+            const startX = parentEl.offsetLeft + parentEl.offsetWidth / 2;
+            const startY = parentEl.offsetTop + parentEl.offsetHeight;
+
+            const endX = childEl.offsetLeft + childEl.offsetWidth / 2;
+            const endY = childEl.offsetTop;
 
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             const curveOffset = 20;
@@ -134,9 +128,14 @@ function drawConnections() {
             path.setAttribute("stroke-width", "2");
             path.setAttribute("fill", "none");
 
-            svg.appendChild(path);
+            group.appendChild(path);
         }
     });
+
+    const rect = treeContainer.getBoundingClientRect();
+    const svg = document.getElementById("connections");
+    svg.setAttribute("width", rect.width);
+    svg.setAttribute("height", rect.height);
 }
 
 let scale = 1;
@@ -175,7 +174,7 @@ window.addEventListener("mousemove", (e) => {
 function updateTransform() {
     const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
     treeContainer.style.transform = transform;
-    svg.style.transform = transform;
+    document.getElementById("connections-group").setAttribute("transform", transform);
 }
 
 buildTree();
