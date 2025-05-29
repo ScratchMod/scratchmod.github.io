@@ -103,44 +103,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawConnections() {
-        const rect = treeContainer.getBoundingClientRect();
-        svg.setAttribute("width", rect.width);
-        svg.setAttribute("height", rect.height);
-        svg.style.width = rect.width + "px";
-        svg.style.height = rect.height + "px";
-        svg.style.top = rect.top + window.scrollY + "px";
-        svg.style.left = rect.left + window.scrollX + "px";
+        svg.innerHTML = "";
 
-        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        const group = document.getElementById("connections-group") || svg;
 
         nodePositions.forEach((parentDiv, parentMod) => {
-            const parentEl = nodePositions.get(parentMod);
-            const parentRect = parentEl.getBoundingClientRect();
-
             for (const key in parentMod.children) {
                 const childMod = parentMod.children[key];
                 const childEl = nodePositions.get(childMod);
                 if (!childEl) continue;
-                const childRect = childEl.getBoundingClientRect();
 
-                const startX = parentRect.left + parentRect.width / 2 - rect.left;
-                const startY = parentRect.bottom - rect.top;
+                const startX = (parentDiv.offsetLeft + parentDiv.offsetWidth / 2) * scale + originX;
+                const startY = (parentDiv.offsetTop + parentDiv.offsetHeight) * scale + originY;
 
-                const endX = childRect.left + childRect.width / 2 - rect.left;
-                const endY = childRect.top - rect.top;
+                const endX = (childEl.offsetLeft + childEl.offsetWidth / 2) * scale + originX;
+                const endY = (childEl.offsetTop) * scale + originY;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                const curveOffset = 20;
+                const curveOffset = 20 * scale;
                 const d = `M${startX},${startY}
-                    C${startX},${startY + curveOffset}
-                    ${endX},${endY - curveOffset}
-                    ${endX},${endY}`;
+                                C${startX},${startY + curveOffset}
+                                ${endX},${endY - curveOffset}
+                                ${endX},${endY}`;
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#2a7ae2");
                 path.setAttribute("stroke-width", "2");
                 path.setAttribute("fill", "none");
 
-                svg.appendChild(path);
+                group.appendChild(path);
             }
         });
     }
@@ -187,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (group) {
             group.setAttribute("transform", transform);
         }
+        drawConnections();
     }
 
     buildTree();
