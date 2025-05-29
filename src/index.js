@@ -103,22 +103,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawConnections() {
-        svg.innerHTML = "";
+        const rect = treeContainer.getBoundingClientRect();
+        svg.setAttribute("width", rect.width);
+        svg.setAttribute("height", rect.height);
+        svg.style.width = rect.width + "px";
+        svg.style.height = rect.height + "px";
+        svg.style.top = rect.top + window.scrollY + "px";
+        svg.style.left = rect.left + window.scrollX + "px";
 
-        nodePositions.forEach((parentDiv, parentMod) => {
-            for (const key in parentMod.children) {
-                const childMod = parentMod.children[key];
-                const childEl = nodePositions.get(childMod);
-                if (!childEl) continue;
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-                const parentRect = parentDiv.getBoundingClientRect();
-                const childRect = childEl.getBoundingClientRect();
+        nodePositions.forEach((pos, mod) => {
+            const parentX = pos.x * 200 + 100;
+            const parentY = pos.y * 150 + 25;
 
-                const startX = parentRect.left + parentRect.width / 2;
-                const startY = parentRect.bottom;
+            for (const key in mod.children) {
+                const childMod = mod.children[key];
+                const childPos = nodePositions.get(childMod);
+                if (!childPos) continue;
 
-                const endX = childRect.left + childRect.width / 2;
-                const endY = childRect.top;
+                const childX = childPos.x * 200 + 100;
+                const childY = childPos.y * 150 + 25;
+
+                const startX = parentX;
+                const startY = parentY + 20;
+                const endX = childX;
+                const endY = childY - 20;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20;
