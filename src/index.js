@@ -1,4 +1,4 @@
-import Mods from "./tree";
+import Mods from "./tree.js";
 
 function printTree(mod, indent = 0) {
     console.log('  '.repeat(indent) + '- ' + mod.name);

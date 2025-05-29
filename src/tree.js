@@ -1,4 +1,4 @@
-import Mods from "./mods";
+import Mods from "./mods.js";
 
 Mods.Scratch.children = {
     TurboWarp: Mods.Turbowarp,
