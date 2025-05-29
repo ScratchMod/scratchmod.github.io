@@ -108,15 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawConnections() {
-        const rect = treeContainer.getBoundingClientRect();
-        svg.setAttribute("width", rect.width);
-        svg.setAttribute("height", rect.height);
-        svg.style.width = rect.width + "px";
-        svg.style.height = rect.height + "px";
-        svg.style.top = rect.top + window.scrollY + "px";
-        svg.style.left = rect.left + window.scrollX + "px";
-
-        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        const group = document.getElementById("connections-group");
+        while (group.firstChild) group.removeChild(group.firstChild);
 
         nodeCoords.forEach((pos, mod) => {
             const parentX = pos.x * 200 + 100;
@@ -135,28 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 const endX = childX;
                 const endY = childY - 20;
 
-                if (
-                    isNaN(startX) || isNaN(startY) ||
-                    isNaN(endX) || isNaN(endY)
-                ) {
-                    console.warn("Invalid path coordinates", {
-                        mod, childMod, startX, startY, endX, endY
-                    });
-                    continue;
-                }
+                if ([startX, startY, endX, endY].some(isNaN)) continue;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20;
-                const d = `M${startX},${startY}
-                                C${startX},${startY + curveOffset}
-                                ${endX},${endY - curveOffset}
-                                ${endX},${endY}`;
+                const d = `M${startX},${startY} C${startX},${startY + curveOffset} ${endX},${endY - curveOffset} ${endX},${endY}`;
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#2a7ae2");
                 path.setAttribute("stroke-width", "2");
                 path.setAttribute("fill", "none");
 
-                svg.appendChild(path);
+                group.appendChild(path);
             }
         });
     }
