@@ -70,7 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildTree() {
-        treeContainer.innerHTML = "";
+        const allNodes = Array.from(treeContainer.children).filter(child => child.tagName !== "SVG");
+        for (const node of allNodes) {
+            treeContainer.removeChild(node);
+        }
+
         nextX = 0;
         nodePositions.clear();
 
