@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildTree() {
-        const allNodes = Array.from(treeContainer.children).filter(child => child.tagName !== "SVG");
+        const allNodes = Array.from(treeContainer.children).filter(child => child.tagName !== "svg");
         for (const node of allNodes) {
             treeContainer.removeChild(node);
         }
