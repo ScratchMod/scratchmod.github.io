@@ -187,7 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (group) {
             group.setAttribute("transform", transform);
         }
-        drawConnections();
     }
 
     buildTree();
