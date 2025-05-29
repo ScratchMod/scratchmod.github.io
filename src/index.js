@@ -2,7 +2,7 @@ import Mods from "./mods.js";
 import "./tree.js";
 
 function printTree(mod, indent = 0) {
-    console.log('  '.repeat(indent) + '- ' + mod.name);
+    console.log("  ".repeat(indent) + "- " + mod.name);
     for (const key in mod.children) {
         printTree(mod.children[key], indent + 1);
     }
@@ -50,109 +50,139 @@ function createInfoPanel(mod) {
     return info;
 }
 
-function getLevels(root) {
-    const levels = [];
-    function traverse(node, depth) {
-        if (!levels[depth]) levels[depth] = [];
-        levels[depth].push(node);
-        for (const key in node.children) {
-            traverse(node.children[key], depth + 1);
-        }
-    }
-    traverse(root, 0);
-    return levels;
-}
-
-const levels = getLevels(Mods.Scratch);
+let nextX = 0;
 const nodePositions = new Map();
+function layoutTree(mod, depth = 0) {
+    const children = Object.values(mod.children || {});
+    let x = nextX;
+
+    const childPositions = children.map(child => layoutTree(child, depth + 1));
+    if (childPositions.length > 0) {
+        x = childPositions.reduce((sum, pos) => sum + pos.x, 0) / childPositions.length;
+    } else {
+        x = nextX++;
+    }
+
+    nodePositions.set(mod, { x, y: depth });
+    return { x, y: depth };
+}
 
 function buildTree() {
     treeContainer.innerHTML = "";
-    levels.forEach((nodes, depth) => {
-        const levelDiv = document.createElement("div");
-        levelDiv.className = "tree-level";
+    nextX = 0;
+    nodePositions.clear();
 
-        nodes.forEach((mod) => {
-            const nodeDiv = document.createElement("div");
-            nodeDiv.className = "mod-node";
+    layoutTree(Mods.Scratch);
 
-            const btn = createButton(mod, depth);
-            const info = createInfoPanel(mod);
+    nodePositions.forEach((pos, mod) => {
+        const nodeDiv = document.createElement("div");
+        nodeDiv.className = "mod-node";
+        nodeDiv.style.position = "absolute";
+        nodeDiv.style.left = (pos.x * 200) + "px";
+        nodeDiv.style.top = (pos.y * 150) + "px";
 
-            btn.addEventListener("click", () => {
-                info.style.display = info.style.display === "block" ? "none" : "block";
-            });
+        const btn = createButton(mod, pos.y);
+        const info = createInfoPanel(mod);
 
-            nodeDiv.appendChild(btn);
-            nodeDiv.appendChild(info);
-            levelDiv.appendChild(nodeDiv);
-
-            nodePositions.set(mod, nodeDiv);
+        btn.addEventListener("click", () => {
+            info.style.display = info.style.display === "block" ? "none" : "block";
         });
-        treeContainer.appendChild(levelDiv);
+
+        nodeDiv.appendChild(btn);
+        nodeDiv.appendChild(info);
+        treeContainer.appendChild(nodeDiv);
+
+        nodePositions.set(mod, nodeDiv);
     });
 }
 
 function drawConnections() {
     const rect = treeContainer.getBoundingClientRect();
-    svg.style.width = rect.width + "px";
-    svg.style.height = rect.height + "px";
     svg.setAttribute("width", rect.width);
     svg.setAttribute("height", rect.height);
+    svg.style.width = rect.width + "px";
+    svg.style.height = rect.height + "px";
     svg.style.top = rect.top + window.scrollY + "px";
     svg.style.left = rect.left + window.scrollX + "px";
 
     while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    levels.forEach((nodes, depth) => {
-        if (depth === levels.length - 1) return;
+    nodePositions.forEach((parentDiv, parentMod) => {
+        const parentEl = nodePositions.get(parentMod);
+        const parentRect = parentEl.getBoundingClientRect();
 
-        nodes.forEach((parentMod) => {
-            const parentDiv = nodePositions.get(parentMod);
-            if (!parentDiv) return;
-            const parentRect = parentDiv.getBoundingClientRect();
+        for (const key in parentMod.children) {
+            const childMod = parentMod.children[key];
+            const childEl = nodePositions.get(childMod);
+            if (!childEl) continue;
+            const childRect = childEl.getBoundingClientRect();
 
-            for (const key in parentMod.children) {
-                const childMod = parentMod.children[key];
-                const childDiv = nodePositions.get(childMod);
-                if (!childDiv) continue;
-                const childRect = childDiv.getBoundingClientRect();
+            const startX = parentRect.left + parentRect.width / 2 - rect.left;
+            const startY = parentRect.bottom - rect.top;
 
-                const startX = parentRect.left + parentRect.width / 2 - rect.left;
-                const startY = parentRect.bottom - rect.top;
+            const endX = childRect.left + childRect.width / 2 - rect.left;
+            const endY = childRect.top - rect.top;
 
-                const endX = childRect.left + childRect.width / 2 - rect.left;
-                const endY = childRect.top - rect.top;
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const curveOffset = 20;
+            const d = `M${startX},${startY}
+                C${startX},${startY + curveOffset}
+                ${endX},${endY - curveOffset}
+                ${endX},${endY}`;
+            path.setAttribute("d", d);
+            path.setAttribute("stroke", "#2a7ae2");
+            path.setAttribute("stroke-width", "2");
+            path.setAttribute("fill", "none");
 
-                const path = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    "path"
-                );
-                const curveOffset = 20;
-                const d = `M${startX},${startY} 
-                    C${startX},${startY + curveOffset} 
-                    ${endX},${endY - curveOffset} 
-                    ${endX},${endY}`;
-
-                path.setAttribute("d", d);
-                path.setAttribute("stroke", "#2a7ae2");
-                path.setAttribute("stroke-width", "2");
-                path.setAttribute("fill", "none");
-
-                svg.appendChild(path);
-            }
-        });
+            svg.appendChild(path);
+        }
     });
 }
 
-function onResizeOrLoad() {
-    drawConnections();
+let scale = 1;
+let originX = 0;
+let originY = 0;
+let isDragging = false;
+let startX, startY;
+
+const wrapper = document.getElementById("tree-wrapper");
+
+wrapper.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const zoomAmount = -e.deltaY * 0.001;
+    scale += zoomAmount;
+    scale = Math.min(Math.max(0.2, scale), 3);
+    updateTransform();
+});
+
+wrapper.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX - originX;
+    startY = e.clientY - originY;
+    treeContainer.style.cursor = "grabbing";
+});
+window.addEventListener("mouseup", () => {
+    isDragging = false;
+    treeContainer.style.cursor = "grab";
+});
+window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    originX = e.clientX - startX;
+    originY = e.clientY - startY;
+    updateTransform();
+});
+
+function updateTransform() {
+    const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+    treeContainer.style.transform = transform;
+    svg.style.transform = transform;
 }
 
 buildTree();
 window.requestAnimationFrame(() => {
     drawConnections();
+    updateTransform();
 });
 
-window.addEventListener("resize", onResizeOrLoad);
-window.addEventListener("scroll", onResizeOrLoad);
+window.addEventListener("resize", drawConnections);
+window.addEventListener("scroll", drawConnections);
