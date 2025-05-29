@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         originX = e.clientX - startX;
         originY = e.clientY - startY;
         updateTransform();
+        drawConnections();
     });
 
     function updateTransform() {
@@ -186,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (group) {
             group.setAttribute("transform", transform);
         }
+        drawConnections();
     }
 
     buildTree();
@@ -196,4 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("resize", drawConnections);
     window.addEventListener("scroll", drawConnections);
+
+    drawConnections();
 });
