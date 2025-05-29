@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             treeContainer.appendChild(nodeDiv);
 
             nodePositions.set(mod, nodeDiv);
-            nodeCoords.set(mod, { x, y: depth });
+            nodeElements.set(mod, nodeDiv);
         });
     }
 
