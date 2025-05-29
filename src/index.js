@@ -177,7 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateTransform() {
         const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
         treeContainer.style.transform = transform;
-        svg.style.transform = transform;
+    
+        const group = document.getElementById("connections-group");
+        if (group) {
+            group.setAttribute("transform", transform);
+        }
     }
 
     buildTree();
