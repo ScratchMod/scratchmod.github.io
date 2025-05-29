@@ -28,9 +28,13 @@
                 a { color: rgb(234, 211, 39); }
             }
             #tree-container {
-                display: inline-block;
                 position: relative;
+                display: inline-block;
                 margin: auto;
+                padding: 20px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             }
             .tree-level {
                 display: flex;
@@ -42,7 +46,7 @@
                 margin: 0 20px;
                 text-align: center;
             }
-            .mod-button {
+            button.mod-button {
                 border: 2px solid #2a7ae2;
                 background-color: #4a90e2;
                 color: white;
@@ -53,7 +57,7 @@
                 user-select: none;
                 transition: background-color 0.3s ease;
             }
-            .mod-button:hover {
+            button.mod-button:hover {
                 background-color: #357abd;
             }
             .mod-info {
@@ -80,12 +84,13 @@
             .mod-info a:hover {
                 text-decoration: underline;
             }
-            svg {
+            svg#connections {
                 position: absolute;
                 top: 0;
                 left: 0;
                 pointer-events: none;
                 overflow: visible;
+                z-index: 0;
             }
         </style>
     </head>
