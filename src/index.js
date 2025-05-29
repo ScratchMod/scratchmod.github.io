@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         layoutTree(Mods.Scratch);
 
+        let maxRight = 0;
+        let maxBottom = 0;
+
         nodePositions.forEach((pos, mod) => {
             const nodeDiv = document.createElement("div");
             nodeDiv.className = "mod-node";
@@ -104,7 +107,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             nodePositions.set(mod, nodeDiv);
             nodeElements.set(mod, nodeDiv);
+
+            const rightEdge = pos.x * 200 + nodeDiv.offsetWidth;
+            const bottomEdge = pos.y * 150 + nodeDiv.offsetHeight;
+
+            if (rightEdge > maxRight) maxRight = rightEdge;
+            if (bottomEdge > maxBottom) maxBottom = bottomEdge;
         });
+
+        treeContainer.style.width = (maxRight + 40) + "px";
+        treeContainer.style.height = (maxBottom + 40) + "px";
     }
 
     function drawConnections() {
