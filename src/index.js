@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateTransform() {
-        const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-        treeContainer.style.transform = transform;
+        const transform = `translate(${originX}, ${originY}) scale(${scale})`;
+        treeContainer.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
     
         const group = document.getElementById("connections-group");
         if (group) {
