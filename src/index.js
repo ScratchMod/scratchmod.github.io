@@ -140,13 +140,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     
-        const rect = treeWrapper.getBoundingClientRect();
+        const rect = treeContainer.getBoundingClientRect();
         svg.setAttribute("width", rect.width);
         svg.setAttribute("height", rect.height);
         svg.style.width = rect.width + "px";
         svg.style.height = rect.height + "px";
-        svg.style.top = 0;
-        svg.style.left = 0;
+        svg.style.top = "0px";
+        svg.style.left = "0px";
     }
 
     let scale = 1;

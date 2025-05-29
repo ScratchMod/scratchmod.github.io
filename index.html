@@ -38,7 +38,7 @@
                 overflow: auto;
             }
             #tree-container {
-                position: absolute;
+                position: relative;
                 display: inline-block;
                 padding: 20px;
                 background: white;
@@ -100,6 +100,8 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+                width: 100%;
+                height: 100%;
                 pointer-events: none;
                 z-index: 0;
             }
@@ -111,10 +113,11 @@
         </header>
         <div id="gap" style="height: 18px;"></div>
         <div id="tree-wrapper">
-            <svg id="connections">
-                <g id="connections-group"></g>
-            </svg>
-            <div id="tree-container"></div>
+            <div id="tree-container">
+                <svg id="connections">
+                    <g id="connections-group"></g>
+                </svg>
+            </div>
         </div>
         <script type="module" src="src/index.js"></script>
     </body>
