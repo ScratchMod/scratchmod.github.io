@@ -135,14 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const childX = childPos.x * 200 + 100;
                 const childY = childPos.y * 150 + 25;
 
-                const startX = parentX;
-                const startY = parentY + 20;
-                const endX = childX;
-                const endY = childY - 20;
-
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20;
-                const d = `M${startX},${startY} C${startX},${startY + curveOffset} ${endX},${endY - curveOffset} ${endX},${endY}`;
+                const d = `M${parentX},${parentY + 20} C${parentX},${parentY + 20 + curveOffset} ${childX},${childY - 20 - curveOffset} ${childX},${childY - 20}`;
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#2a7ae2");
                 path.setAttribute("stroke-width", "2");
@@ -151,14 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 group.appendChild(path);
             }
         });
-    
+
         const rect = treeContainer.getBoundingClientRect();
-        svg.setAttribute("width", rect.width);
-        svg.setAttribute("height", rect.height);
-        svg.style.width = rect.width + "px";
-        svg.style.height = rect.height + "px";
-        svg.style.top = "0px";
-        svg.style.left = "0px";
+        svg.setAttribute("width", treeContainer.clientWidth);
+        svg.setAttribute("height", treeContainer.clientHeight);
+        svg.style.width = treeContainer.clientWidth + "px";
+        svg.style.height = treeContainer.clientHeight + "px";
+        svg.style.top = 0;
+        svg.style.left = 0;
     }
 
     let scale = 1;
