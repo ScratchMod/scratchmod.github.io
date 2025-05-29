@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-
-<script>
-    setTimeout(function()
-    {
-        window.location.href = '/tree';
-    },250);
-</script>
-
 <html lang="en">
     <head>
         <link rel="shortcut icon" href="https://scratchmod.github.io/favicon.ico?" type="image/x-icon"></link>
         <title>Scratch Mods</title>
-        
-    </head>
-    <body>
+        <script src="src/index.js"></script>
         <style>
-            body{
-                background-color: #ebd429;
-                font-family: 'Courier New', Courier, monospace;
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                margin: 0; padding: 0;
+            }
+            header {
+                background-color: hsl(53, 83%, 54%);
                 color: white;
+                text-align: center;
+                padding: 8px 0;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            main {
+                max-width: 600px;
+                margin: auto;
+            }
+            @media (prefers-color-scheme: dark) {
+                body { background: #111; color: #eee; }
+                a { color: rgb(234, 211, 39); }
             }
         </style>
+    </head>
+    <body>
+        <header>
+            <h1>Scratch Mods</h1>
+        </header>
         <main>
-            <p>Redirecting to Main Page..</p>
-            <p>if it doesn't automatically redirect <a href="/src">Click Here</a></p>
+            <p><i>NOT FINISHED YET</i></p>
         </main>
     </body>
 </html>
