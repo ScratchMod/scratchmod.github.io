@@ -198,10 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateTransform() {
         treeContainer.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
     
-        const group = document.getElementById("connections-group");
+        /*const group = document.getElementById("connections-group");
         if (group) {
             group.setAttribute("transform", `translate(${originX},${originY}) scale(${scale})`);
-        }
+        }*/
         drawConnections();
     }
 
