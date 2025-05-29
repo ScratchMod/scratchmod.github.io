@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const treeContainer = document.getElementById("tree-container");
     const svg = document.getElementById("connections");
 
+    const nodeCoords = new Map();
+    const nodeElements = new Map();
+
     function createButton(mod, depth) {
         const btn = document.createElement("button");
         btn.textContent = mod.name;
@@ -66,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         nodePositions.set(mod, { x, y: depth });
+        nodeCoords.set(mod, { x, y: depth });
         return { x, y: depth };
     }
 
@@ -99,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             treeContainer.appendChild(nodeDiv);
 
             nodePositions.set(mod, nodeDiv);
+            nodeCoords.set(mod, { x, y: depth });
         });
     }
 
@@ -113,13 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-        nodePositions.forEach((pos, mod) => {
+        nodeCoords.forEach((pos, mod) => {
             const parentX = pos.x * 200 + 100;
             const parentY = pos.y * 150 + 25;
 
             for (const key in mod.children) {
                 const childMod = mod.children[key];
-                const childPos = nodePositions.get(childMod);
+                const childPos = nodeCoords.get(childMod);
                 if (!childPos) continue;
 
                 const childX = childPos.x * 200 + 100;
@@ -129,6 +134,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 const startY = parentY + 20;
                 const endX = childX;
                 const endY = childY - 20;
+
+                if (
+                    isNaN(startX) || isNaN(startY) ||
+                    isNaN(endX) || isNaN(endY)
+                ) {
+                    console.warn("Invalid path coordinates", {
+                        mod, childMod, startX, startY, endX, endY
+                    });
+                    continue;
+                }
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20;
