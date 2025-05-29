@@ -9,7 +9,6 @@
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 text-align: center;
                 margin: 0;
-                padding: 40px 20px;
                 background: #f9f9f9;
             }
             header {
@@ -23,9 +22,9 @@
                 max-width: 600px;
                 margin: auto;
             }
-            @media (prefers-color-scheme: dark) {
-                body { background: #111; color: #eee; }
-                a { color: rgb(234, 211, 39); }
+            #gap {
+                width: 100%;
+                background-color: transparent;
             }
             #tree-container {
                 position: relative;
@@ -95,6 +94,10 @@
         </style>
     </head>
     <body>
+        <header>
+            <h1>Scratch Mods</h1>
+        </header>
+        <div id="gap" style="height: 18px;"></div>
         <div id="tree-container"></div>
         <svg id="connections"></svg>
     </body>

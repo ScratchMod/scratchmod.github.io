@@ -32,7 +32,12 @@ function createInfoPanel(mod) {
         const url = new URL(mod.link);
         favicon.src = url.origin + "/favicon.ico";
     } catch {
-        favicon.src = "";
+        try {
+            const url = new URL(mod.link);
+            favicon.src = url.origin + "/static/favicon.ico";
+        } catch {
+            favicon.src = "";
+        }
     }
 
     const link = document.createElement("a");
