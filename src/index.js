@@ -105,19 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawConnections() {
         svg.innerHTML = "";
 
-        const group = document.getElementById("connections-group") || svg;
-
         nodePositions.forEach((parentDiv, parentMod) => {
             for (const key in parentMod.children) {
                 const childMod = parentMod.children[key];
                 const childEl = nodePositions.get(childMod);
                 if (!childEl) continue;
 
-                const startX = (parentDiv.offsetLeft + parentDiv.offsetWidth / 2) * scale + originX;
-                const startY = (parentDiv.offsetTop + parentDiv.offsetHeight) * scale + originY;
+                const startX = (parentDiv.offsetLeft + parentDiv.offsetWidth / 2) * scale + originX - window.scrollX;
+                const startY = (parentDiv.offsetTop + parentDiv.offsetHeight) * scale + originY - window.scrollY;
 
-                const endX = (childEl.offsetLeft + childEl.offsetWidth / 2) * scale + originX;
-                const endY = (childEl.offsetTop) * scale + originY;
+                const endX = (childEl.offsetLeft + childEl.offsetWidth / 2) * scale + originX - window.scrollX;
+                const endY = (childEl.offsetTop) * scale + originY - window.scrollY;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20 * scale;
@@ -130,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 path.setAttribute("stroke-width", "2");
                 path.setAttribute("fill", "none");
 
-                group.appendChild(path);
+                svg.appendChild(path);
             }
         });
     }
