@@ -111,14 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 const childEl = nodePositions.get(childMod);
                 if (!childEl) continue;
 
-                const startX = (parentDiv.offsetLeft + parentDiv.offsetWidth / 2) * scale + originX - window.scrollX;
-                const startY = (parentDiv.offsetTop + parentDiv.offsetHeight) * scale + originY - window.scrollY;
+                const parentRect = parentDiv.getBoundingClientRect();
+                const childRect = childEl.getBoundingClientRect();
 
-                const endX = (childEl.offsetLeft + childEl.offsetWidth / 2) * scale + originX - window.scrollX;
-                const endY = (childEl.offsetTop) * scale + originY - window.scrollY;
+                const startX = parentRect.left + parentRect.width / 2;
+                const startY = parentRect.bottom;
+
+                const endX = childRect.left + childRect.width / 2;
+                const endY = childRect.top;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                const curveOffset = 20 * scale;
+                const curveOffset = 20;
                 const d = `M${startX},${startY}
                                 C${startX},${startY + curveOffset}
                                 ${endX},${endY - curveOffset}
