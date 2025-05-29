@@ -51,19 +51,13 @@ function createInfoPanel(mod) {
 }
 
 let nextX = 0;
-const nodePositions = new Map();
+const nodePositions = new Map(); // mod => {x, y}
 function layoutTree(mod, depth = 0) {
     const children = Object.values(mod.children || {});
-    let x = nextX;
-
-    const childPositions = children.map(child => layoutTree(child, depth + 1));
-    if (childPositions.length > 0) {
-        x = childPositions.reduce((sum, pos) => sum + pos.x, 0) / childPositions.length;
-    } else {
-        x = nextX++;
-    }
-
+    const x = nextX++;
     nodePositions.set(mod, { x, y: depth });
+
+    children.forEach(child => layoutTree(child, depth + 1));
     return { x, y: depth };
 }
 
@@ -94,6 +88,21 @@ function buildTree() {
 
         nodePositions.set(mod, nodeDiv);
     });
+
+    updateContainerSize();
+}
+
+function updateContainerSize() {
+    let maxX = 0, maxY = 0;
+    nodePositions.forEach(div => {
+        if (!(div instanceof HTMLElement)) return;
+        const right = div.offsetLeft + div.offsetWidth;
+        const bottom = div.offsetTop + div.offsetHeight;
+        if (right > maxX) maxX = right;
+        if (bottom > maxY) maxY = bottom;
+    });
+    treeContainer.style.width = maxX + "px";
+    treeContainer.style.height = maxY + "px";
 }
 
 function drawConnections() {
@@ -107,21 +116,19 @@ function drawConnections() {
 
     while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    nodePositions.forEach((parentDiv, parentMod) => {
-        const parentEl = nodePositions.get(parentMod);
-        const parentRect = parentEl.getBoundingClientRect();
+    nodePositions.forEach((parentEl, parentMod) => {
+        if (!(parentEl instanceof HTMLElement)) return;
 
         for (const key in parentMod.children) {
             const childMod = parentMod.children[key];
             const childEl = nodePositions.get(childMod);
-            if (!childEl) continue;
-            const childRect = childEl.getBoundingClientRect();
+            if (!(childEl instanceof HTMLElement)) continue;
 
-            const startX = parentRect.left + parentRect.width / 2 - rect.left;
-            const startY = parentRect.bottom - rect.top;
+            const startX = parentEl.offsetLeft + parentEl.offsetWidth / 2;
+            const startY = parentEl.offsetTop + parentEl.offsetHeight;
 
-            const endX = childRect.left + childRect.width / 2 - rect.left;
-            const endY = childRect.top - rect.top;
+            const endX = childEl.offsetLeft + childEl.offsetWidth / 2;
+            const endY = childEl.offsetTop;
 
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             const curveOffset = 20;
@@ -174,8 +181,7 @@ window.addEventListener("mousemove", (e) => {
 
 function updateTransform() {
     const transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-    treeContainer.style.transform = transform;
-    svg.style.transform = transform;
+    drawConnections();
 }
 
 buildTree();
