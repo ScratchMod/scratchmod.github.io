@@ -96,7 +96,7 @@ let Ampmod = {
 
 let Bananamod = {
     "name": "Banana-mod",
-    "link": "https://banana-mod.github.io/",
+    "link": "https://banana-mod.github.io/editor.html",
     "children": {}
 }
 

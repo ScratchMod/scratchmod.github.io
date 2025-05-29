@@ -7,7 +7,10 @@
         <style>
             body {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                margin: 0; padding: 0;
+                text-align: center;
+                margin: 0;
+                padding: 40px 20px;
+                background: #f9f9f9;
             }
             header {
                 background-color: hsl(53, 83%, 54%);
@@ -24,9 +27,70 @@
                 body { background: #111; color: #eee; }
                 a { color: rgb(234, 211, 39); }
             }
+            #tree-container {
+                display: inline-block;
+                position: relative;
+                margin: auto;
+            }
+            .tree-level {
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+            }
+            .mod-node {
+                position: relative;
+                margin: 0 20px;
+                text-align: center;
+            }
+            .mod-button {
+                border: 2px solid #2a7ae2;
+                background-color: #4a90e2;
+                color: white;
+                border-radius: 8px;
+                cursor: pointer;
+                padding: 12px 20px;
+                font-weight: bold;
+                user-select: none;
+                transition: background-color 0.3s ease;
+            }
+            .mod-button:hover {
+                background-color: #357abd;
+            }
+            .mod-info {
+                margin-top: 8px;
+                display: none;
+                background: white;
+                border: 1px solid #ddd;
+                padding: 8px 12px;
+                border-radius: 6px;
+                width: 180px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            }
+            .mod-info img {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+            .mod-info a {
+                color: #2a7ae2;
+                text-decoration: none;
+                font-weight: 600;
+            }
+            .mod-info a:hover {
+                text-decoration: underline;
+            }
+            svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                overflow: visible;
+            }
         </style>
     </head>
     <body>
-        <div id="mod-tree"></div>
+        <div id="tree-container"></div>
+        <svg id="connections"></svg>
     </body>
 </html>

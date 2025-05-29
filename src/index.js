@@ -8,14 +8,21 @@ function printTree(mod, indent = 0) {
 }
 printTree(Mods.Scratch);
 
-function createModNode(mod) {
-    const container = document.createElement('div');
-    container.className = 'mod-node';
+const treeContainer = document.getElementById('tree-container');
+const svg = document.getElementById('connections');
 
-    const button = document.createElement('button');
-    button.className = 'mod-button';
-    button.textContent = mod.name;
+function createButton(mod, depth) {
+    const btn = document.createElement('button');
+    btn.textContent = mod.name;
+    btn.className = 'mod-button';
 
+    const scale = 1 - 0.15 * depth;
+    btn.style.fontSize = (18 * scale) + 'px';
+    btn.style.padding = (12 * scale) + 'px ' + (20 * scale) + 'px';
+    return btn;
+}
+
+function createInfoPanel(mod) {
     const info = document.createElement('div');
     info.className = 'mod-info';
 
@@ -26,7 +33,6 @@ function createModNode(mod) {
     } catch {
         favicon.src = '';
     }
-
     const link = document.createElement('a');
     link.href = mod.link;
     link.target = '_blank';
@@ -34,28 +40,96 @@ function createModNode(mod) {
 
     info.appendChild(favicon);
     info.appendChild(link);
-    info.style.display = 'none';
 
-    const childrenContainer = document.createElement('div');
-    childrenContainer.className = 'children-container';
-
-    button.addEventListener('click', () => {
-        const isVisible = childrenContainer.style.display === 'block';
-        childrenContainer.style.display = isVisible ? 'none' : 'block';
-        info.style.display = isVisible ? 'none' : 'inline-flex';
-    });
-
-    for (const key in mod.children) {
-        const childNode = createModNode(mod.children[key]);
-        childrenContainer.appendChild(childNode);
+    return info;
+}
+function getLevels(root) {
+    const levels = [];
+    function traverse(node, depth) {
+        if (!levels[depth]) levels[depth] = [];
+        levels[depth].push(node);
+        for (const key in node.children) {
+            traverse(node.children[key], depth + 1);
+        }
     }
-
-    container.appendChild(button);
-    container.appendChild(info);
-    container.appendChild(childrenContainer);
-
-    return container;
+    traverse(root, 0);
+    return levels;
 }
 
-const treeRoot = document.getElementById('mod-tree');
-treeRoot.appendChild(createModNode(Mods.Scratch));
+const levels = getLevels(Mods.Scratch);
+
+const nodePositions = new Map();
+
+levels.forEach((nodes, depth) => {
+    const levelDiv = document.createElement('div');
+    levelDiv.className = 'tree-level';
+
+    nodes.forEach(mod => {
+        const nodeDiv = document.createElement('div');
+        nodeDiv.className = 'mod-node';
+
+        const btn = createButton(mod, depth);
+        const info = createInfoPanel(mod);
+
+        btn.addEventListener('click', () => {
+            info.style.display = info.style.display === 'block' ? 'none' : 'block';
+        });
+
+        nodeDiv.appendChild(btn);
+        nodeDiv.appendChild(info);
+        levelDiv.appendChild(nodeDiv);
+
+        nodePositions.set(mod, nodeDiv);
+    });
+
+    treeContainer.appendChild(levelDiv);
+});
+
+function drawConnections() {
+    const rect = treeContainer.getBoundingClientRect();
+    svg.setAttribute('width', rect.width);
+    svg.setAttribute('height', rect.height);
+    svg.style.width = rect.width + 'px';
+    svg.style.height = rect.height + 'px';
+
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    levels.forEach((nodes, depth) => {
+        if (depth === levels.length -1) return;
+        nodes.forEach(parentMod => {
+            const parentDiv = nodePositions.get(parentMod);
+            if (!parentDiv) return;
+
+            const parentRect = parentDiv.getBoundingClientRect();
+
+            for (const key in parentMod.children) {
+                const childMod = parentMod.children[key];
+                const childDiv = nodePositions.get(childMod);
+                if (!childDiv) continue;
+                const childRect = childDiv.getBoundingClientRect();
+
+                const startX = parentRect.left + parentRect.width/2 - rect.left;
+                const startY = parentRect.bottom - rect.top;
+
+                const endX = childRect.left + childRect.width/2 - rect.left;
+                const endY = childRect.top - rect.top;
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg","line");
+                line.setAttribute('x1', startX);
+                line.setAttribute('y1', startY);
+                line.setAttribute('x2', endX);
+                line.setAttribute('y2', endY);
+                line.setAttribute('stroke', '#2a7ae2');
+                line.setAttribute('stroke-width', '2');
+
+                svg.appendChild(line);
+            }
+        });
+    });
+}
+
+window.addEventListener('resize', () => {
+    drawConnections();
+});
+
+setTimeout(drawConnections, 100);
