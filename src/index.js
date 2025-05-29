@@ -128,8 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const endX = childX;
                 const endY = childY - 20;
 
-                if ([startX, startY, endX, endY].some(isNaN)) continue;
-
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 const curveOffset = 20;
                 const d = `M${startX},${startY} C${startX},${startY + curveOffset} ${endX},${endY - curveOffset} ${endX},${endY}`;
@@ -141,6 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 group.appendChild(path);
             }
         });
+    
+        const rect = treeWrapper.getBoundingClientRect();
+        svg.setAttribute("width", rect.width);
+        svg.setAttribute("height", rect.height);
+        svg.style.width = rect.width + "px";
+        svg.style.height = rect.height + "px";
+        svg.style.top = 0;
+        svg.style.left = 0;
     }
 
     let scale = 1;
@@ -178,12 +184,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateTransform() {
-        const transform = `translate(${originX}, ${originY}) scale(${scale})`;
         treeContainer.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
     
         const group = document.getElementById("connections-group");
         if (group) {
-            group.setAttribute("transform", transform);
+            group.setAttribute("transform", `translate(${originX},${originY}) scale(${scale})`);
         }
         drawConnections();
     }
