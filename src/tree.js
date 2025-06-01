@@ -35,6 +35,9 @@ Mods.Penguinmod.children = {
   Zypheramod: Mods.Zypheramod,
   Espressoblocks: Mods.Espressoblocks,
   ZincCoding: Mods.ZincCoding,
+  FireMod: Mods.FireMod,
+  Axerboost: Mods.Axerboost,
+  Itch: Mods.Itch,
   Hiddenblocks: Mods.Hiddenblocks,
   Dinosaurmod: Mods.Dinosaurmod,
 }

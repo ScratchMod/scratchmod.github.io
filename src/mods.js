@@ -190,8 +190,27 @@ let BlockScript = {
     "children": {}
 }
 
+let FireMod = {
+    "name": "FireMod",
+    "link": "https://firemod.vercel.app/editor.html",
+    "children": {}
+}
+
+let Axerboost = {
+    "name": "Axerboost",
+    "link": "https://Axerboost.github.io/editor.html",
+    "children": {}
+}
+
+let Itch = {
+    "name": "Itch",
+    "link": "https://itch-scratch-mod.github.io/Itch-Gui/editor.html",
+    "children": {}
+}
+
 const Mods = {
     Ampmod,
+    Axerboost,
     Bananamod,
     Batscoding,
     BlockScript,
@@ -205,7 +224,9 @@ const Mods = {
     Electramod,
     Espressoblocks,
     Falconmod,
+    FireMod,
     Hiddenblocks,
+    Itch,
     Mistwarp,
     MyScratchBlocks,
     NitroBolt,

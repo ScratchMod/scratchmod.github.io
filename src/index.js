@@ -36,12 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const url = new URL(mod.link);
             favicon.src = url.origin + "/favicon.ico";
         } catch {
-            try {
+            favicon.src = "";
+        }
+        try {
+            if (favicon.src === "") {
                 const url = new URL(mod.link);
                 favicon.src = url.origin + "/static/favicon.ico";
-            } catch {
-                favicon.src = "";
             }
+        } catch {
+            favicon.src = "";
         }
 
         const link = document.createElement("a");
