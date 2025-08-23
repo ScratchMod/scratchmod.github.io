@@ -208,6 +208,12 @@ let Itch = {
     "children": {}
 }
 
+let ZtEngine = {
+    "name": "02engine",
+    "link": "https://editor.02engine.02studio.xyz/index.html",
+    "children": {}
+}
+
 const Mods = {
     Ampmod,
     Axerboost,
@@ -243,7 +249,8 @@ const Mods = {
     Turbowarp,
     Unsandboxed,
     ZincCoding,
-    Zypheramod
+    Zypheramod,
+    ZtEngine
 }
 
 export default Mods
