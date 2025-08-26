@@ -197,8 +197,8 @@ let FireMod = {
 }
 
 let Axerboost = {
-    "name": "Axerboost",
-    "link": "https://Axerboost.github.io/editor.html",
+    "name": "Axerboost / HexiumTechnologies",
+    "link": "https://hexiumtechnologies.github.io/editor.html",
     "children": {}
 }
 
@@ -214,7 +214,68 @@ let ZtEngine = {
     "children": {}
 }
 
+let ScratchCE = {
+    "name": "Scratch Community Edition",
+    "link": "https://scratchce.github.io/beta/0.5.1/editor.html",
+    "children": {}
+}
+
+let SNEDit = {
+    "name": "SN-Edit",
+    "link": "https://cubixentertainment.github.io/SN-Edit/editor.html",
+    "children": {}
+}
+
+let HiddenblocksScratch = {
+    "name": "HiddenBlocks (Scratch)",
+    "link": "https://hiddenblocks.github.io/scratch-gui",
+    "children": {}
+}
+
+let ScratchArduino = {
+    "name": "Scratch Arduino",
+    "link": "https://scratch.ottawastem.com/",
+    "children": {}
+}
+
+let Robobo = {
+    "name": "Robobo",
+    "link": "https://scratch.theroboboproject.com/",
+    "children": {}
+}
+
+let Adacraft = {
+    "name": "Adacraft",
+    "link": "https://www.adacraft.org/studio/",
+    "children": {}
+}
+
+let Poseblocks = {
+    "name": "PoseBlocks",
+    "link": "https://playground.raise.mit.edu/create/",
+    "children": {}
+}
+
+let MLFC = {
+    "name": "M.L.F.C",
+    "link": "https://machinelearningforkids.co.uk/scratch/",
+    "children": {}
+}
+
+let ClipCC = {
+    "name": "ClipCC",
+    "link": "https://codingclip.com/editor/stable/",
+    "children": {}
+}
+
+let MakeBlock = {
+    "name": "MakeBlock",
+    "link": "https://ide.makeblock.com/",
+    "children": {}
+}
+
 const Mods = {
+    Adacraft,
     Ampmod,
     Axerboost,
     Bananamod,
@@ -222,6 +283,7 @@ const Mods = {
     BlockScript,
     Bricklife,
     CircleIDE,
+    ClipCC,
     Cocrea,
     Cognimates,
     CrabsProgramming,
@@ -232,8 +294,11 @@ const Mods = {
     Falconmod,
     FireMod,
     Hiddenblocks,
+    HiddenblocksScratch,
     Itch,
+    MakeBlock,
     Mistwarp,
+    MLFC,
     MyScratchBlocks,
     NitroBolt,
     Nuclearmod,
@@ -241,11 +306,16 @@ const Mods = {
     Orangemod,
     Penguinmod,
     Plungermod,
+    Poseblocks,
+    Robobo,
     RocketBlocks,
     Scratch,
+    ScratchArduino,
+    ScratchCE,
     Shredmod,
     Smalruby,
     SnailIDE,
+    SNEDit,
     Turbowarp,
     Unsandboxed,
     ZincCoding,

@@ -8,6 +8,16 @@ Mods.Scratch.children = {
   Smalruby: Mods.Smalruby,
   E_icques: Mods.E_icques,
   Bricklife: Mods.Bricklife,
+  HiddenblocksScratch: Mods.HiddenblocksScratch,
+  Robobo: Mods.Robobo,
+  Poseblocks: Mods.Poseblocks,
+  MLFC: Mods.MLFC,
+  ClipCC: Mods.ClipCC,
+  MakeBlock: Mods.MakeBlock,
+}
+
+Mods.OpenBlock.children = {
+  ScratchArduino: Mods.ScratchArduino,
 }
 
 Mods.Turbowarp.children = {
@@ -21,7 +31,10 @@ Mods.Turbowarp.children = {
   Nuclearmod: Mods.Nuclearmod,
   BlockScript: Mods.BlockScript,
   Cocrea: Mods.Cocrea,
-  ZtEngine: Mods.ZtEngine
+  ZtEngine: Mods.ZtEngine,
+  ScratchCE: Mods.ScratchCE,
+  SNEDit: Mods.SNEDit,
+  Adacraft: Mods.Adacraft,
 }
 
 Mods.Shredmod.children = {
