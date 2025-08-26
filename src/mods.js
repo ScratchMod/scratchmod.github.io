@@ -221,7 +221,7 @@ let SNEDit = {
 }
 
 let HiddenblocksScratch = {
-    "name": "HiddenBlocks\n (Scratch version)",
+    "name": "HiddenBlocks (Scratch)",
     "link": "https://hiddenblocks.github.io/scratch-gui",
     "children": {}
 }
@@ -251,7 +251,7 @@ let Poseblocks = {
 }
 
 let MLFC = {
-    "name": "Machine Learning\n for Kids",
+    "name": "M.L.F.C",
     "link": "https://machinelearningforkids.co.uk/scratch/",
     "children": {}
 }
