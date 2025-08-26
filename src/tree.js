@@ -3,7 +3,7 @@ import Mods from "./mods.js";
 Mods.Scratch.children = {
   Turbowarp: Mods.Turbowarp,
   OpenBlock: Mods.OpenBlock,
-  Cocrea: Mods.Cocrea,
+
   Cognimates: Mods.Cognimates,
   Smalruby: Mods.Smalruby,
   E_icques: Mods.E_icques,
@@ -30,6 +30,8 @@ Mods.Turbowarp.children = {
   Shredmod: Mods.Shredmod,
   Nuclearmod: Mods.Nuclearmod,
   BlockScript: Mods.BlockScript,
+  Cocrea: Mods.Cocrea,
+  ZtEngine: Mods.ZtEngine,
   ScratchCE: Mods.ScratchCE,
   SNEDit: Mods.SNEDit,
   Adacraft: Mods.Adacraft,
