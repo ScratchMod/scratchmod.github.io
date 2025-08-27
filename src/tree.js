@@ -14,6 +14,7 @@ Mods.Scratch.children = {
   MLFC: Mods.MLFC,
   ClipCC: Mods.ClipCC,
   MakeBlock: Mods.MakeBlock,
+  Xcratch: Mods.Xcratch
 }
 
 Mods.OpenBlock.children = {
@@ -35,6 +36,8 @@ Mods.Turbowarp.children = {
   ScratchCE: Mods.ScratchCE,
   SNEDit: Mods.SNEDit,
   Adacraft: Mods.Adacraft,
+  Dash: Mods.Dash,
+  Axolotl: Mods.Axolotl,
 }
 
 Mods.Shredmod.children = {
@@ -55,6 +58,8 @@ Mods.Penguinmod.children = {
   Itch: Mods.Itch,
   Hiddenblocks: Mods.Hiddenblocks,
   Dinosaurmod: Mods.Dinosaurmod,
+  GlowingCrown: Mods.GlowingCrown,
+  CattiesWorld: Mods.CattiesWorld,
 }
 
 Mods.SnailIDE.children = {

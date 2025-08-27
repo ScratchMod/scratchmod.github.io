@@ -274,25 +274,59 @@ let MakeBlock = {
     "children": {}
 }
 
+let Xcratch = {
+    "name": "Xcratch",
+    "link": "https://xcratch.github.io/editor/",
+    "children": {}
+}
+
+let Dash = {
+    "name": "Dash",
+    "link": "https://dashblocks.github.io/editor.html",
+    "children": {}
+}
+
+let CattiesWorld = {
+    "name": "CattiesWorld",
+    "link": "https://studio.cattiesworld.nl/editor.html",
+    "children": {}
+}
+
+let GlowingCrown = {
+    "name": "GlowingCrown",
+    "link": "https://glowingcrown.github.io/studio/editor.html",
+    "children": {}
+}
+
+let Axolotl = {
+    "name": "Axolotl",
+    "link": "https://gtrees-n.github.io/AxolotlEditor-gui/editor.html",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
     Axerboost,
+    Axolotl,
     Bananamod,
     Batscoding,
     BlockScript,
     Bricklife,
+    CattiesWorld,
     CircleIDE,
     ClipCC,
     Cocrea,
     Cognimates,
     CrabsProgramming,
+    Dash,
     Dinosaurmod,
     E_icques,
     Electramod,
     Espressoblocks,
     Falconmod,
     FireMod,
+    GlowingCrown,
     Hiddenblocks,
     HiddenblocksScratch,
     Itch,
@@ -318,9 +352,10 @@ const Mods = {
     SNEDit,
     Turbowarp,
     Unsandboxed,
+    Xcratch,
     ZincCoding,
-    Zypheramod,
-    ZtEngine
+    ZtEngine,
+    Zypheramod
 }
 
 export default Mods
