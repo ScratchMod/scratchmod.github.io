@@ -195,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         originX = e.clientX - startX;
         originY = e.clientY - startY;
         updateTransform();
+        drawConnections();
     });
 
     function updateTransform() {
