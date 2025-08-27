@@ -126,25 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const group = document.getElementById("connections-group");
         while (group.firstChild) group.removeChild(group.firstChild);
 
-        nodeElements.forEach((nodeDiv, mod) => {
-            const btn = nodeDiv.querySelector(".mod-button");
-            if (!btn) return;
-
-            const rect = btn.getBoundingClientRect();
-            const parentX = rect.left + rect.width / 2 + window.scrollX;
-            const parentY = rect.top + rect.height / 2 + window.scrollY;
+        nodeCoords.forEach((pos, mod) => {
+            const parentX = pos.x * 200 + 100;
+            const parentY = pos.y * 150 + 25;
 
             for (const key in mod.children) {
                 const childMod = mod.children[key];
-                const childNode = nodeElements.get(childMod);
-                if (!childNode) continue;
+                const childPos = nodeCoords.get(childMod);
+                if (!childPos) continue;
 
-                const childBtn = childNode.querySelector(".mod-button");
-                const childRect = childBtn.getBoundingClientRect();
-                const childX = childRect.left + childRect.width / 2 + window.scrollX;
-                const childY = childRect.top + childRect.height / 2 + window.scrollY;
+                const childX = childPos.x * 200 + 100;
+                const childY = childPos.y * 150 + 25;
 
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                const startXOffset = -18;
+                const endXOffset = -18;
+                const startYOffset = 18;
+                const endYOffset = 18;
                 const curveOffset = 15;
 
                 const d = `M${parentX},${parentY} C${parentX},${parentY + curveOffset} ${childX},${childY - curveOffset} ${childX},${childY}`;
@@ -157,8 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        const rect = treeContainer.getBoundingClientRect();
         svg.setAttribute("width", treeContainer.clientWidth);
         svg.setAttribute("height", treeContainer.clientHeight);
+        svg.style.width = treeContainer.clientWidth + "px";
+        svg.style.height = treeContainer.clientHeight + "px";
+        svg.style.top = 0;
+        svg.style.left = 0;
     }
 
     let scale = 1;
