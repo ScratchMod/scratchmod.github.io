@@ -75,7 +75,10 @@
                 background-color: #357abd;
             }
             .mod-info {
-                margin-top: 8px;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
                 display: none;
                 background: white;
                 border: 1px solid #ddd;
@@ -83,6 +86,7 @@
                 border-radius: 6px;
                 width: 180px;
                 box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                z-index: 10;
             }
             .mod-info img {
                 width: 20px;
