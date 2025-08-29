@@ -304,6 +304,12 @@ let Axolotl = {
     "children": {}
 }
 
+let Stax = {
+    "name": "Stax",
+    "link": "https://stax.fun/editor",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
@@ -350,6 +356,7 @@ const Mods = {
     Smalruby,
     SnailIDE,
     SNEDit,
+    Stax,
     Turbowarp,
     Unsandboxed,
     Xcratch,

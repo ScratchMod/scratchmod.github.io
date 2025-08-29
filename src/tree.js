@@ -60,6 +60,7 @@ Mods.Penguinmod.children = {
   Dinosaurmod: Mods.Dinosaurmod,
   GlowingCrown: Mods.GlowingCrown,
   CattiesWorld: Mods.CattiesWorld,
+  Stax: Mods.Stax,
 }
 
 Mods.SnailIDE.children = {
