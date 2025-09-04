@@ -69,6 +69,7 @@ Mods.Penguinmod.children = {
 
 Mods.Dinosaurmod.children = {
   Fairymod: Mods.Fairymod,
+  Craftmod: Mods.Craftmod
 }
 
 Mods.SnailIDE.children = {

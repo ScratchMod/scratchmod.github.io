@@ -348,6 +348,12 @@ let Fairymod = {
     "children": {}
 }
 
+let Craftmod = {
+    "name": "Craftmod",
+    "link": "https://craftingdead26.github.io/Craftmod.github.io/editor.html",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
@@ -363,6 +369,7 @@ const Mods = {
     Cocrea,
     Cognimates,
     CrabsProgramming,
+    Craftmod,
     Dash,
     Dinosaurmod,
     E_icques,
