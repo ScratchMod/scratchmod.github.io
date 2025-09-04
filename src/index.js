@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nextX = 0;
         nodePositions.clear();
 
-        layoutTree(Mods.Scratch1dot4);
+        layoutTree(Mods.Scratch);
 
         let maxRight = 0;
         let maxBottom = 0;
