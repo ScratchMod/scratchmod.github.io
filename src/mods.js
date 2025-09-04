@@ -354,6 +354,12 @@ let Craftmod = {
     "children": {}
 }
 
+let LibreKitten = {
+    "name": "LibreKitten",
+    "link": "https://librekitten.org/editor.html",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
@@ -385,6 +391,7 @@ const Mods = {
     HiddenblocksScratch,
     Itch,
     LearningML,
+    LibreKitten,
     Lubot,
     MakeBlock,
     Mistwarp,

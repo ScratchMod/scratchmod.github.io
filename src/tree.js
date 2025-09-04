@@ -41,7 +41,8 @@ Mods.Turbowarp.children = {
   Adacraft: Mods.Adacraft,
   Dash: Mods.Dash,
   Axolotl: Mods.Axolotl,
-  GvbvdxxMod2: Mods.GvbvdxxMod2
+  GvbvdxxMod2: Mods.GvbvdxxMod2,
+  LibreKitten: Mods.LibreKitten
 }
 
 Mods.Shredmod.children = {
