@@ -1,5 +1,5 @@
 let Scratch = {
-    "name": "Scratch",
+    "name": "Scratch 3.0",
     "link": "https://scratch.mit.edu/projects/editor",
     "children": {}
 }
@@ -360,6 +360,24 @@ let LibreKitten = {
     "children": {}
 }
 
+let Scratch2 = {
+    "name": "Scratch 2.0",
+    "link": "https://scratch.mit.edu/download/scratch2",
+    "children": {}
+}
+
+let Scratch1dot4 = {
+    "name": "Scratch 1.4",
+    "link": "https://scratch.mit.edu/download/scratch2",
+    "children": {}
+}
+
+let Snap = {
+    "name": "Snap",
+    "link": "https://snap.berkeley.edu/snap/snap.html",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
@@ -407,11 +425,14 @@ const Mods = {
     Robobo,
     RocketBlocks,
     Scratch,
+    Scratch1dot4,
+    Scratch2,
     ScratchArduino,
     ScratchCE,
     Shredmod,
     Smalruby,
     SnailIDE,
+    Snap,
     SNEDit,
     Stack9Dots,
     Stax,

@@ -1,5 +1,14 @@
 import Mods from "./mods.js";
 
+Mods.Scratch1dot4.children = {
+  Scratch2: Mods.Scratch2,
+  Snap: Mods.Snap,
+}
+
+Mods.Scratch2.children = {
+  Scratch: Mods.Scratch
+}
+
 Mods.Scratch.children = {
   Turbowarp: Mods.Turbowarp,
   OpenBlock: Mods.OpenBlock,
