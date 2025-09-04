@@ -3,7 +3,6 @@ import Mods from "./mods.js";
 Mods.Scratch.children = {
   Turbowarp: Mods.Turbowarp,
   OpenBlock: Mods.OpenBlock,
-
   Cognimates: Mods.Cognimates,
   Smalruby: Mods.Smalruby,
   E_icques: Mods.E_icques,
@@ -14,7 +13,11 @@ Mods.Scratch.children = {
   MLFC: Mods.MLFC,
   ClipCC: Mods.ClipCC,
   MakeBlock: Mods.MakeBlock,
-  Xcratch: Mods.Xcratch
+  Xcratch: Mods.Xcratch,
+  Lubot: Mods.Lubot,
+  Stack9Dots: Mods.Stack9Dots,
+  LearningML: Mods.LearningML,
+  GvbvdxxMod: Mods.GvbvdxxMod
 }
 
 Mods.OpenBlock.children = {
@@ -38,6 +41,7 @@ Mods.Turbowarp.children = {
   Adacraft: Mods.Adacraft,
   Dash: Mods.Dash,
   Axolotl: Mods.Axolotl,
+  GvbvdxxMod2: Mods.GvbvdxxMod2
 }
 
 Mods.Shredmod.children = {
@@ -50,7 +54,7 @@ Mods.Penguinmod.children = {
   Plungermod: Mods.Plungermod,
   Orangemod: Mods.Orangemod,
   Falconmod: Mods.Falconmod,
-  Zypheramod: Mods.Zypheramod,
+  //Zypheramod: Mods.Zypheramod,
   Espressoblocks: Mods.Espressoblocks,
   ZincCoding: Mods.ZincCoding,
   FireMod: Mods.FireMod,
@@ -61,6 +65,10 @@ Mods.Penguinmod.children = {
   GlowingCrown: Mods.GlowingCrown,
   CattiesWorld: Mods.CattiesWorld,
   Stax: Mods.Stax,
+}
+
+Mods.Dinosaurmod.children = {
+  Fairymod: Mods.Fairymod,
 }
 
 Mods.SnailIDE.children = {

@@ -112,11 +112,11 @@ let CrabsProgramming = {
     "children": {}
 }
 
-let Zypheramod = {
+/*let Zypheramod = {
     "name": "Zyphera-mod",
     "link": "https://zyphera-mod.github.io/editor.html",
     "children": {}
-}
+}*/
 
 let Falconmod = {
     "name": "FalconMod",
@@ -310,6 +310,44 @@ let Stax = {
     "children": {}
 }
 
+// im not sure if the name is correct but i'll assume it is
+let Lubot = {
+    "name": "Lubot",
+    "link": "https://icodeba.com/scratch",
+    "children": {}
+}
+
+// im not sure if the name is correct but i'll assume it is
+let Stack9Dots = {
+    "name": "Stack9Dots",
+    "link": "https://stack.9dots.org",
+    "children": {}
+}
+
+let LearningML = {
+    "name": "LearningML",
+    "link": "https://advanced.learningml.org/scratch",
+    "children": {}
+}
+
+let GvbvdxxMod = {
+    "name": "GvbvdxxMod",
+    "link": "https://jasonglenevans.github.io/GMSource/editor/index.html",
+    "children": {}
+}
+
+let GvbvdxxMod2 = {
+    "name": "GvbvdxxMod 2",
+    "link": "https://jasonglenevans.github.io/GvbvdxxMod2/editor.html",
+    "children": {}
+}
+
+let Fairymod = {
+    "name": "Fairymod",
+    "link": "https://fairymod.github.io/editor.html",
+    "children": {}
+}
+
 const Mods = {
     Adacraft,
     Ampmod,
@@ -330,12 +368,17 @@ const Mods = {
     E_icques,
     Electramod,
     Espressoblocks,
+    Fairymod,
     Falconmod,
     FireMod,
     GlowingCrown,
+    GvbvdxxMod,
+    GvbvdxxMod2,
     Hiddenblocks,
     HiddenblocksScratch,
     Itch,
+    LearningML,
+    Lubot,
     MakeBlock,
     Mistwarp,
     MLFC,
@@ -356,13 +399,14 @@ const Mods = {
     Smalruby,
     SnailIDE,
     SNEDit,
+    Stack9Dots,
     Stax,
     Turbowarp,
     Unsandboxed,
     Xcratch,
     ZincCoding,
     ZtEngine,
-    Zypheramod
+    //Zypheramod
 }
 
 export default Mods
