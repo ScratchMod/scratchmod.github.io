@@ -38,8 +38,8 @@ Mods.Turbowarp.children = {
   Ampmod: Mods.Ampmod,
   Mistwarp: Mods.Mistwarp,
   Unsandboxed: Mods.Unsandboxed,
-  MyScratchBlocks: Mods.MyScratchBlocks,
-  NitroBolt: Mods.NitroBolt,
+  //MyScratchBlocks: Mods.MyScratchBlocks,
+  //NitroBolt: Mods.NitroBolt,
   Shredmod: Mods.Shredmod,
   Nuclearmod: Mods.Nuclearmod,
   BlockScript: Mods.BlockScript,
@@ -51,7 +51,12 @@ Mods.Turbowarp.children = {
   Dash: Mods.Dash,
   Axolotl: Mods.Axolotl,
   GvbvdxxMod2: Mods.GvbvdxxMod2,
-  LibreKitten: Mods.LibreKitten
+  LibreKitten: Mods.LibreKitten,
+  ConiBlocks: Mods.ConiBlocks
+}
+
+Mods.Ampmod.children = {
+  CodeSnap: Mods.CodeSnap
 }
 
 Mods.Shredmod.children = {
@@ -75,6 +80,7 @@ Mods.Penguinmod.children = {
   GlowingCrown: Mods.GlowingCrown,
   CattiesWorld: Mods.CattiesWorld,
   Stax: Mods.Stax,
+  TeraMod: Mods.TeraMod
 }
 
 Mods.Dinosaurmod.children = {
@@ -87,6 +93,10 @@ Mods.SnailIDE.children = {
   Bananamod: Mods.Bananamod,
   CrabsProgramming: Mods.CrabsProgramming,
   Batscoding: Mods.Batscoding,
+}
+
+Mods.CircleIDE.children = {
+  AbsoluteMod: Mods.AbsoluteMod
 }
 
 export default Mods;

@@ -378,7 +378,33 @@ let Snap = {
     "children": {}
 }
 
+let TeraMod = {
+    "name": "TeraMod",
+    "link": "https://cattiesworld.github.io/Teramod/editor.html",
+    "children": {}
+}
+
+let ConiBlocks = {
+    "name": "ConiBlocks",
+    "link": "https://coniblocks.github.io/studio/#0",
+    "children": {}
+}
+
+let CodeSnap = {
+    "name": "CodeSnap",
+    "link": "https://codesnap-org.github.io/projects/editor.html",
+    "children": {}
+}
+
+let AbsoluteMod = {
+    "name": "AbsoluteMod",
+    "link": "https://absolutemod.github.io/editor.html",
+    "children": {}
+}
+
+
 const Mods = {
+    AbsoluteMod,
     Adacraft,
     Ampmod,
     Axerboost,
@@ -391,7 +417,9 @@ const Mods = {
     CircleIDE,
     ClipCC,
     Cocrea,
+    CodeSnap,
     Cognimates,
+    ConiBlocks,
     CrabsProgramming,
     Craftmod,
     Dash,
@@ -436,6 +464,7 @@ const Mods = {
     SNEDit,
     Stack9Dots,
     Stax,
+    TeraMod,
     Turbowarp,
     Unsandboxed,
     Xcratch,
