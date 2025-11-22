@@ -38,7 +38,7 @@ Mods.Turbowarp.children = {
   Ampmod: Mods.Ampmod,
   Mistwarp: Mods.Mistwarp,
   Unsandboxed: Mods.Unsandboxed,
-  //MyScratchBlocks: Mods.MyScratchBlocks,
+  MyScratchBlocks: Mods.MyScratchBlocks,
   //NitroBolt: Mods.NitroBolt,
   Shredmod: Mods.Shredmod,
   Nuclearmod: Mods.Nuclearmod,
@@ -52,7 +52,9 @@ Mods.Turbowarp.children = {
   Axolotl: Mods.Axolotl,
   GvbvdxxMod2: Mods.GvbvdxxMod2,
   LibreKitten: Mods.LibreKitten,
-  ConiBlocks: Mods.ConiBlocks
+  ConiBlocks: Mods.ConiBlocks,
+  PenguinmodPort: Mods.PenguinmodPort,
+  Fox2d: Mods.Fox2d
 }
 
 Mods.Ampmod.children = {

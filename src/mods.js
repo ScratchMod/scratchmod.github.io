@@ -59,8 +59,8 @@ let OpenBlock = {
 }
 
 let MyScratchBlocks = {
-    "name": "MyScratchBlocks",
-    "link": "https://myscratchblocks.github.io/editor#",
+    "name": "SnapLabs",
+    "link": "https://myscratchblocks.github.io/scratch-gui/editor.html",
     "children": {}
 }
 
@@ -402,6 +402,18 @@ let AbsoluteMod = {
     "children": {}
 }
 
+let PenguinmodPort = {
+    "name": "Penguinmod-Port",
+    "link": "https://penguinmod-port.github.io/scratch-gui/editor",
+    "children": {}
+}
+
+let Fox2d = {
+    "name": "Fox2d",
+    "link": "https://fox2d-gui.pages.dev/editor",
+    "children": {}
+}
+
 
 const Mods = {
     AbsoluteMod,
@@ -430,6 +442,7 @@ const Mods = {
     Fairymod,
     Falconmod,
     FireMod,
+    Fox2d,
     GlowingCrown,
     GvbvdxxMod,
     GvbvdxxMod2,
@@ -448,6 +461,7 @@ const Mods = {
     OpenBlock,
     Orangemod,
     Penguinmod,
+    PenguinmodPort,
     Plungermod,
     Poseblocks,
     Robobo,
