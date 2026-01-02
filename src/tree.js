@@ -61,6 +61,10 @@ Mods.Ampmod.children = {
   CodeSnap: Mods.CodeSnap
 }
 
+Mods.Mistwarp.children = {
+  Mistblocks: Mods.ScratchBox
+}
+
 Mods.Shredmod.children = {
   RocketBlocks: Mods.RocketBlocks,
 }

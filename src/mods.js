@@ -70,6 +70,12 @@ let Mistwarp = {
     "children": {}
 }
 
+let ScratchBox = {
+    "name": "ScratchBox",
+    "link": "https://editor.scratchbox.dev/editor.html",
+    "children": {}
+}
+
 let Plungermod = {
     "name": "Plungermod",
     "link": "https://plungermod.github.io/editor.html",
@@ -454,6 +460,7 @@ const Mods = {
     Lubot,
     MakeBlock,
     Mistwarp,
+    ScratchBox,
     MLFC,
     MyScratchBlocks,
     NitroBolt,
