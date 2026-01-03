@@ -410,7 +410,7 @@ let PenguinmodPort = {
 
 let Fox2d = {
     "name": "Fox2d",
-    "link": "https://fox2d-gui.pages.dev/editor",
+    "link": "https://editor.fox2d.com/editor",
     "children": {}
 }
 
@@ -488,3 +488,4 @@ const Mods = {
 }
 
 export default Mods
+
