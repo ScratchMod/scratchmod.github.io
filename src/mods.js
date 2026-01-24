@@ -216,7 +216,7 @@ let Itch = {
 
 let ZtEngine = {
     "name": "02engine",
-    "link": "https://editor.02engine.02studio.xyz/index.html",
+    "link": "https://editor.02engine.org/index.html",
     "children": {}
 }
 
@@ -495,4 +495,5 @@ const Mods = {
 }
 
 export default Mods
+
 
