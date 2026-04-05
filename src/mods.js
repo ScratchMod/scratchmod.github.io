@@ -420,6 +420,11 @@ let Fox2d = {
     "children": {}
 }
 
+let AstraEditor = {
+    "name": "AstraEditor",
+    "link": "https://editors.astras.top/online",
+    "children": {}
+}
 
 const Mods = {
     AbsoluteMod,
@@ -491,6 +496,7 @@ const Mods = {
     Xcratch,
     ZincCoding,
     ZtEngine,
+    AstraEditor,
     //Zypheramod
 }
 
