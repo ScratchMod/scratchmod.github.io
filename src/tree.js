@@ -39,7 +39,7 @@ Mods.Turbowarp.children = {
   Mistwarp: Mods.Mistwarp,
   Unsandboxed: Mods.Unsandboxed,
   MyScratchBlocks: Mods.MyScratchBlocks,
-  //NitroBolt: Mods.NitroBolt,
+  NitroBolt: Mods.NitroBolt,
   Shredmod: Mods.Shredmod,
   Nuclearmod: Mods.Nuclearmod,
   BlockScript: Mods.BlockScript,
@@ -55,7 +55,8 @@ Mods.Turbowarp.children = {
   LibreKitten: Mods.LibreKitten,
   ConiBlocks: Mods.ConiBlocks,
   PenguinmodPort: Mods.PenguinmodPort,
-  Fox2d: Mods.Fox2d
+  Fox2d: Mods.Fox2d,
+  CodeTorch: Mods.CodeTorch
 }
 
 Mods.Ampmod.children = {
@@ -87,7 +88,11 @@ Mods.Penguinmod.children = {
   GlowingCrown: Mods.GlowingCrown,
   CattiesWorld: Mods.CattiesWorld,
   Stax: Mods.Stax,
-  TeraMod: Mods.TeraMod
+  TeraMod: Mods.TeraMod,
+  Tutelmod: Mods.Tutelmod,
+  SuperChaosMod: Mods.SuperChaosMod,
+  GaiaMod: Mods.GaiaMod,
+  MerrCode: Mods.MerrCode
 }
 
 Mods.Dinosaurmod.children = {

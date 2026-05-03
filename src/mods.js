@@ -108,7 +108,7 @@ let Bananamod = {
 
 let NitroBolt = {
     "name": "Nitrobolt",
-    "link": "https://forkbolt.miyo.lol/editor#0",
+    "link": "https://nitrobolt.org/editor#0",
     "children": {}
 }
 
@@ -420,9 +420,39 @@ let Fox2d = {
     "children": {}
 }
 
+let CodeTorch = {
+    "name": "CodeTorch",
+    "link": "https://codetorch.net/en/projects/editor",
+    "children": {}
+}
+
 let AstraEditor = {
     "name": "AstraEditor",
     "link": "https://editors.astras.top/online",
+    "children": {}
+}
+
+let Tutelmod = {
+    "name": "TutelMod",
+    "link": "https://studio.tutelmod.com/editor.html",
+    "children": {}
+}
+
+let SuperChaosMod = {
+    "name": "Super Chaos Mod",
+    "link": "https://super-chaosmod.github.io/editor.html",
+    "children": {}
+}
+
+let GaiaMod = {
+    "name": "GaiaMod",
+    "link": "https://gaiamod-main.github.io/editor.html",
+    "children": {}
+}
+
+let MerrCode = {
+    "name": "MerrCode",
+    "link": "https://merrcode.merrcraft.com/editor.html",
     "children": {}
 }
 
@@ -430,6 +460,7 @@ const Mods = {
     AbsoluteMod,
     Adacraft,
     Ampmod,
+    AstraEditor,
     Axerboost,
     Axolotl,
     Bananamod,
@@ -441,6 +472,7 @@ const Mods = {
     ClipCC,
     Cocrea,
     CodeSnap,
+    CodeTorch,
     Cognimates,
     ConiBlocks,
     CrabsProgramming,
@@ -454,6 +486,7 @@ const Mods = {
     Falconmod,
     FireMod,
     Fox2d,
+    GaiaMod,
     GlowingCrown,
     GvbvdxxMod,
     GvbvdxxMod2,
@@ -464,6 +497,7 @@ const Mods = {
     LibreKitten,
     Lubot,
     MakeBlock,
+    MerrCode,
     Mistwarp,
     ScratchBox,
     MLFC,
@@ -490,13 +524,14 @@ const Mods = {
     SNEDit,
     Stack9Dots,
     Stax,
+    SuperChaosMod,
     TeraMod,
     Turbowarp,
+    Tutelmod,
     Unsandboxed,
     Xcratch,
     ZincCoding,
     ZtEngine,
-    AstraEditor,
     //Zypheramod
 }
 
