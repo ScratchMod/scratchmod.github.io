@@ -45,6 +45,7 @@ Mods.Turbowarp.children = {
   BlockScript: Mods.BlockScript,
   Cocrea: Mods.Cocrea,
   ZtEngine: Mods.ZtEngine,
+  AstraEditor: Mods.AstraEditor,
   ScratchCE: Mods.ScratchCE,
   SNEDit: Mods.SNEDit,
   Adacraft: Mods.Adacraft,
