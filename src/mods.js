@@ -456,6 +456,12 @@ let MerrCode = {
     "children": {}
 }
 
+let OmniBlocks = {
+    "name": "OmniBlocks",
+    "link": "https://omniblocks.github.io",
+    "children": {}
+}
+
 const Mods = {
     AbsoluteMod,
     Adacraft,
@@ -532,6 +538,7 @@ const Mods = {
     Xcratch,
     ZincCoding,
     ZtEngine,
+    OmniBlocks,
     //Zypheramod
 }
 

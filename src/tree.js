@@ -36,6 +36,7 @@ Mods.OpenBlock.children = {
 Mods.Turbowarp.children = {
   Penguinmod: Mods.Penguinmod,
   Ampmod: Mods.Ampmod,
+  OmniBlocks: Mods.OmniBlocks,
   Mistwarp: Mods.Mistwarp,
   Unsandboxed: Mods.Unsandboxed,
   MyScratchBlocks: Mods.MyScratchBlocks,
