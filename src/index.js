@@ -1,7 +1,22 @@
 import Mods from "./mods.js";
 import "./tree.js";
+import darkTheme from "./theme/dark.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    let isEnableDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkStyle = document.createElement("style");
+    darkStyle.className = "darkStyle";
+    darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
+    document.head.appendChild(darkStyle);
+
+    const switchThemeButton = document.getElementById("switch-theme");
+    if (switchThemeButton) {
+        switchThemeButton.onclick = () => {
+            isEnableDarkMode = !isEnableDarkMode;
+            darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
+        };
+    }
+
     function printTree(mod, indent = 0) {
         console.log("  ".repeat(indent) + "- " + mod.name);
         for (const key in mod.children) {
@@ -77,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildTree() {
-        const allNodes = Array.from(treeContainer.children).filter(child => child.tagName !== "svg");
+        const allNodes = Array.from(treeContainer.children).filter(
+            child => child.tagName !== "svg",
+        );
         for (const node of allNodes) {
             treeContainer.removeChild(node);
         }
@@ -94,8 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const nodeDiv = document.createElement("div");
             nodeDiv.className = "mod-node";
             nodeDiv.style.position = "absolute";
-            nodeDiv.style.left = (pos.x * 200) + "px";
-            nodeDiv.style.top = (pos.y * 150) + "px";
+            nodeDiv.style.left = pos.x * 200 + "px";
+            nodeDiv.style.top = pos.y * 150 + "px";
 
             const btn = createButton(mod, pos.y);
             const info = createInfoPanel(mod);
@@ -118,8 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (bottomEdge > maxBottom) maxBottom = bottomEdge;
         });
 
-        treeContainer.style.width = (maxRight + 40) + "px";
-        treeContainer.style.height = (maxBottom + 40) + "px";
+        treeContainer.style.width = maxRight + 40 + "px";
+        treeContainer.style.height = maxBottom + 40 + "px";
     }
 
     function drawConnections() {
@@ -172,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const wrapper = document.getElementById("tree-wrapper");
 
-    wrapper.addEventListener("wheel", (e) => {
+    wrapper.addEventListener("wheel", e => {
         e.preventDefault();
         const zoomAmount = -e.deltaY * 0.001;
         scale += zoomAmount;
@@ -180,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTransform();
     });
 
-    wrapper.addEventListener("mousedown", (e) => {
+    wrapper.addEventListener("mousedown", e => {
         isDragging = true;
         startX = e.clientX - originX;
         startY = e.clientY - originY;
@@ -190,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false;
         treeContainer.style.cursor = "grab";
     });
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", e => {
         if (!isDragging) return;
         originX = e.clientX - startX;
         originY = e.clientY - startY;
@@ -200,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateTransform() {
         treeContainer.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-    
+
         /*const group = document.getElementById("connections-group");
         if (group) {
             group.setAttribute("transform", `translate(${originX},${originY}) scale(${scale})`);
