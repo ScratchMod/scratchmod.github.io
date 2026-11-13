@@ -3,7 +3,7 @@ import "./tree.js";
 import darkTheme from "./theme/dark.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    let isEnableDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    let isEnableDarkMode = localStorage.getItem("sm-theme") == "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches;
     const darkStyle = document.createElement("style");
     darkStyle.className = "darkStyle";
     darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         switchThemeButton.onclick = () => {
             isEnableDarkMode = !isEnableDarkMode;
             darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
+            localStorage.setItem("sm-theme", isEnableDarkMode ? "dark" : "light");
         };
     }
 
@@ -211,6 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isDragging) return;
         originX = e.clientX - startX;
         originY = e.clientY - startY;
+        updateTransform();
+        drawConnections();
+    });
+    window.addEventListener("keydown", e => {
+        if (!!isDragging || e.keyCode !== 69) return;
+        originX = 0;
+        originY = 0;
         updateTransform();
         drawConnections();
     });

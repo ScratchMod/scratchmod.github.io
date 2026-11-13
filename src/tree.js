@@ -57,7 +57,10 @@ Mods.Turbowarp.children = {
   ConiBlocks: Mods.ConiBlocks,
   PenguinmodPort: Mods.PenguinmodPort,
   Fox2d: Mods.Fox2d,
-  CodeTorch: Mods.CodeTorch
+  CodeTorch: Mods.CodeTorch,
+  CattyMod: Mods.CattyMod,
+  BreadMod: Mods.BreadMod,
+  Zippr: Mods.Zippr
 }
 
 Mods.Ampmod.children = {
@@ -98,7 +101,11 @@ Mods.Penguinmod.children = {
   Tutelmod: Mods.Tutelmod,
   SuperChaosMod: Mods.SuperChaosMod,
   GaiaMod: Mods.GaiaMod,
-  MerrCode: Mods.MerrCode
+  MerrCode: Mods.MerrCode,
+  GasterMod: Mods.GasterMod,
+  Permafy: Mods.Permafy,
+  MysticScratch: Mods.MysticScratch,
+  Furrymod: Mods.Furrymod
 }
 
 Mods.Dinosaurmod.children = {

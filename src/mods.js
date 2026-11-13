@@ -282,7 +282,7 @@ let MLFC = {
 
 let ClipCC = {
     "name": "ClipCC",
-    "link": "https://codingclip.com/editor/stable/",
+    "link": "https://codingclip.com/editor",
     "children": {}
 }
 
@@ -344,7 +344,7 @@ let Stack9Dots = {
 
 let LearningML = {
     "name": "LearningML",
-    "link": "https://advanced.learningml.org/scratch",
+    "link": "https://learningml.org/lml-scratch-gui/",
     "children": {}
 }
 
@@ -470,7 +470,49 @@ let MerrCode = {
 
 let OmniBlocks = {
     "name": "OmniBlocks",
-    "link": "https://omniblocks.github.io",
+    "link": "https://omniblocks.org/editor.html",
+    "children": {}
+}
+
+let Zippr = {
+    "name": "Zippr",
+    "link": "https://www.zipprpj.website/#/create",
+    "children": {}
+}
+
+let Furrymod = {
+    "name": "Furrymod",
+    "link": "https://studio.furrymod.tutel.page/",
+    "children": {}
+}
+
+let MysticScratch = {
+    "name": "MysticScratch",
+    "link": "https://mysticscratch.github.io/editor.html",
+    "children": {}
+}
+
+let Permafy = {
+    "name": "Permafy",
+    "link": "https://projects.permafy.org/editor",
+    "children": {}
+}
+
+let GasterMod = {
+    "name": "GasterMod",
+    "link": "https://toyey-picklejar.github.io/gastermod.github.io/",
+    "children": {}
+}
+
+let CattyMod = {
+    "name": "CattyMod",
+    "link": "https://studio.cattymod.app/editor",
+    "children": {}
+}
+
+let BreadMod = {
+    "name": "BreadMod",
+    "link": "https://breadmod.devstuf.dev/editor.html",
     "children": {}
 }
 
@@ -484,10 +526,11 @@ const Mods = {
     Bananamod,
     Batscoding,
     Bilup,
-    RemixWarp,
     BlockScript,
+    BreadMod,
     Bricklife,
     CattiesWorld,
+    CattyMod,
     CircleIDE,
     ClipCC,
     Cocrea,
@@ -506,7 +549,9 @@ const Mods = {
     Falconmod,
     FireMod,
     Fox2d,
+    Furrymod,
     GaiaMod,
+    GasterMod,
     GlowingCrown,
     GvbvdxxMod,
     GvbvdxxMod2,
@@ -519,23 +564,27 @@ const Mods = {
     MakeBlock,
     MerrCode,
     Mistwarp,
-    ScratchBox,
+    MysticScratch,
     MLFC,
     MyScratchBlocks,
     NitroBolt,
     Nuclearmod,
+    OmniBlocks,
     OpenBlock,
     Orangemod,
     Penguinmod,
     PenguinmodPort,
+    Permafy,
     Plungermod,
     Poseblocks,
+    RemixWarp,
     Robobo,
     RocketBlocks,
     Scratch,
     Scratch1dot4,
     Scratch2,
     ScratchArduino,
+    ScratchBox,
     ScratchCE,
     Shredmod,
     Smalruby,
@@ -552,7 +601,7 @@ const Mods = {
     Xcratch,
     ZincCoding,
     ZtEngine,
-    OmniBlocks,
+    Zippr,
     //Zypheramod
 }
 
