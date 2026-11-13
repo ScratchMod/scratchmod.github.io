@@ -482,7 +482,7 @@ let Zippr = {
 
 let Furrymod = {
     "name": "Furrymod",
-    "link": "https://studio.furrymod.tutel.page/",
+    "link": "https://studio.furrymod.tutel.page/editor.html",
     "children": {}
 }
 

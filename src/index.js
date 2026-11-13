@@ -3,7 +3,7 @@ import "./tree.js";
 import darkTheme from "./theme/dark.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    let isEnableDarkMode = localStorage.getItem("sm-theme") == "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches;
+    let isEnableDarkMode = localStorage.getItem("sm-theme") == "dark" || localStorage.getItem("sm-theme") == null && window.matchMedia("(prefers-color-scheme: dark)").matches;
     const darkStyle = document.createElement("style");
     darkStyle.className = "darkStyle";
     darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
