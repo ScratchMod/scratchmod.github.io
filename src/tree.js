@@ -65,7 +65,12 @@ Mods.Ampmod.children = {
 }
 
 Mods.Mistwarp.children = {
-  Mistblocks: Mods.ScratchBox
+  Mistblocks: Mods.ScratchBox,
+  Bilup: Mods.Bilup
+}
+
+Mods.Bilup.children = {
+  RemixWarp: Mods.RemixWarp
 }
 
 Mods.Shredmod.children = {

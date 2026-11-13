@@ -148,6 +148,18 @@ let Batscoding = {
     "children": {}
 }
 
+let Bilup = {
+    "name": "Bilup",
+    "link": "https://com.bilup.org/editor.html",
+    "children": {}
+}
+
+let RemixWarp = {
+    "name": "RemixWarp",
+    "link": "https://remixwarp.pages.dev/editor.html",
+    "children": {}
+}
+
 let Espressoblocks = {
     "name": "EspressoBlocks",
     "link": "https://espressoblocks.com/editor.html",
@@ -471,6 +483,8 @@ const Mods = {
     Axolotl,
     Bananamod,
     Batscoding,
+    Bilup,
+    RemixWarp,
     BlockScript,
     Bricklife,
     CattiesWorld,
