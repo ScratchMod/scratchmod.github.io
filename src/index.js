@@ -194,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const xInput = document.querySelector(".upper-coords-inputs .lower-coords-input input#x");
     const yInput = document.querySelector(".upper-coords-inputs .lower-coords-input input#y");
     const zoomInput = document.querySelector(".zoom-options .zoom-input input#zoom");
+    updateInputs()
 
     const zoomOut = document.querySelector(".zoom-options .zoom-buttons button#out");
     const zoomReset = document.querySelector(".zoom-options .zoom-buttons button#reset");
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const zoomAmount = -e.deltaY * 0.001;
         scale += zoomAmount;
         scale = Math.min(Math.max(0.2, scale), 3);
-        zoomInput.value = scale * 100;
+        updateInputs()
         updateTransform();
     });
 
@@ -222,8 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isDragging) return;
         originX = e.clientX - startX;
         originY = e.clientY - startY;
-        xInput.value = originX;
-        yInput.value = originY;
+        updateInputs()
         updateTransform();
         drawConnections();
     });
@@ -237,36 +237,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     xInput.addEventListener("input", e => {
         originX = xInput.value;
+        updateInputs()
         updateTransform();
         drawConnections();
     });
     yInput.addEventListener("input", e => {
         originY = yInput.value;
+        updateInputs()
         updateTransform();
         drawConnections();
     });
     zoomInput.addEventListener("input", e => {
         scale = zoomInput.value / 100
         scale = Math.min(Math.max(0.2, scale), 3);
+        updateInputs()
         updateTransform();
     });
 
     zoomOut.addEventListener("click", e => {
         scale = scale -= 0.1
         scale = Math.min(Math.max(0.2, scale), 3);
-        zoomInput.value = scale * 100;
+        updateInputs()
         updateTransform();
     });
     zoomReset.addEventListener("click", e => {
         scale = 1
         scale = Math.min(Math.max(0.2, scale), 3);
-        zoomInput.value = scale * 100;
+        updateInputs()
         updateTransform();
     });
     zoomIn.addEventListener("click", e => {
         scale = scale += 0.1
         scale = Math.min(Math.max(0.2, scale), 3);
-        zoomInput.value = scale * 100;
+        updateInputs()
         updateTransform();
     });
 
@@ -278,6 +281,12 @@ document.addEventListener("DOMContentLoaded", () => {
             group.setAttribute("transform", `translate(${originX},${originY}) scale(${scale})`);
         }*/
         drawConnections();
+    }
+
+    function updateInputs() {
+        xInput.value = Math.round(originX);
+        yInput.value = Math.round(originY);
+        zoomInput.value = Math.round(scale * 100);
     }
 
     buildTree();
