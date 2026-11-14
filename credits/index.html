@@ -53,7 +53,7 @@
         </section>
         
         <script type="module">
-            import {smDevelopers, smSuggestors, smDarkMode} from "./users.js";
+            import UserData from "./users.js";
             import darkTheme from "../src/theme/dark.js";
 
             document.addEventListener("DOMContentLoaded", () => {
@@ -96,13 +96,13 @@
                 return newUser;
             };
 
-            smDevelopers.map((data, index) => {
+            UserData.smDevelopers.map((data, index) => {
                 smDevelopersDIV.appendChild(userObject(data));
             });
-            smSuggestors.map((data, index) => {
+            UserData.smSuggestors.map((data, index) => {
                 smSuggestorsDIV.appendChild(userObject(data));
             });
-            smDarkMode.map((data, index) => {
+            UserData.smDarkMode.map((data, index) => {
                 smDarkModeDIV.appendChild(userObject(data));
             });
         </script>
