@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="https://scratchmod.github.io/favicon.ico?" type="image/x-icon"></link>
+        <link rel="stylesheet" href="../index.css" />
+        <link rel="stylesheet" href="./index.css" />
+        <title>Scratch Mods</title>
+    </head>
+    <body>
+        <header>
+            <h1>ScratchMod Credits</h1>
+            <button id="switch-theme">Switch Theme</button>
+        </header>
+        <section>
+            <h1>ScratchMod</h1>
+        </section>
+        <section>
+            <h2>Contributors</h2>
+            <p>
+                ScratchMod is made by a single developer.
+            </p>
+            <div id="smDevelopers"></div>
+            <p>
+                However, ScratchMod's modification tree is not only updated by the developer,
+                as users have also suggested, updated and added mods to it.
+                This list may get outdated sometimes, but here they are listed below:
+            </p>
+            <div id="smSuggestors"></div>
+            <p><i>The list order is randomized on each refresh.</i></p>
+            <p>
+                Theme switching (Light and dark mode) was also added by:
+            </p>
+            <div id="smDarkMode"></div>
+        </section>
+        <section>
+            <h2>GitHub Pages</h2>
+            <p><a href="https://pages.github.com/">GitHub Pages</a> is currently used to host ScratchMod.</p>
+            <a href="https://pages.github.com/">
+                <img
+                    src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/collections/github-pages-examples/github-pages-examples.png"
+                    width="160"
+                    height="160"
+                />
+            </a>
+        </section>
+        <section>
+            <p>
+                <i>
+                    Individual contributors are listed in no particular order.
+                    The order is randomized each visit.
+                </i>
+            </p>
+        </section>
+        
+        <script type="module">
+            import {smDevelopers, smSuggestors, smDarkMode} from "./users.js";
+            import darkTheme from "../src/theme/dark.js";
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedTheme = localStorage.getItem("sm-theme");
+                let isEnableDarkMode = savedTheme == "dark" || savedTheme == null && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const darkStyle = document.createElement("style");
+                darkStyle.className = "darkStyle";
+                darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
+                document.head.appendChild(darkStyle);
+
+                const switchThemeButton = document.getElementById("switch-theme");
+                if (switchThemeButton) {
+                    switchThemeButton.onclick = () => {
+                        isEnableDarkMode = !isEnableDarkMode;
+                        darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
+                        localStorage.setItem("sm-theme", isEnableDarkMode ? "dark" : "light");
+                    };
+                }
+            });
+
+            const smDevelopersDIV = document.getElementById("smDevelopers");
+            const smSuggestorsDIV = document.getElementById("smSuggestors");
+            const smDarkModeDIV = document.getElementById("smDarkMode");
+
+            function userObject({image, text, href}) {
+                let newUser = document.createElement("a");
+                newUser.href = href;
+                newUser.target = "_blank";
+                newUser.rel = "noreferrer"
+                newUser.className = "user"
+                let newUserImage = document.createElement("img");
+                newUserImage.className = "user-image";
+                newUserImage.src = image;
+                newUserImage.width = "60";
+                newUserImage.height = "60";
+                let newUserInfo = document.createElement("div");
+                newUserInfo.className = "user-info";
+                newUserInfo.innerHTML = text;
+                newUser.append(newUserImage, newUserInfo)
+                return newUser;
+            };
+
+            smDevelopers.map((data, index) => {
+                smDevelopersDIV.appendChild(userObject(data));
+            });
+            smSuggestors.map((data, index) => {
+                smSuggestorsDIV.appendChild(userObject(data));
+            });
+            smDarkMode.map((data, index) => {
+                smDarkModeDIV.appendChild(userObject(data));
+            });
+        </script>
+    </body>
+</html>

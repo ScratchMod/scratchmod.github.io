@@ -14,6 +14,7 @@ header {
 }
 body {
     background-color: #050505;
+    color: white;
 }
 #tree-settings-container {
     background-color: rgb(172, 158, 0);
@@ -21,9 +22,12 @@ body {
 .zoom-options .zoom-input input,
 .upper-coords-inputs .lower-coords-input input {
     background-color: #111;
-    border: 2px solid #888;
+    border: 2px solid #777;
 }
 .zoom-options .zoom-buttons button {
     background-color: rgb(172, 158, 0);
+}
+.user:link:hover {
+    background: #222;
 }
 `

@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+section {
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.users {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.user-image {
+    margin-right: 12px;
+}
+.user {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 1.25rem;
+    color: inherit !important;
+    text-decoration: none;
+    transition: background .2s;
+}
+.user:link:hover {
+    background: #eee;
+}

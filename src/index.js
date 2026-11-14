@@ -227,6 +227,24 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTransform();
         drawConnections();
     });
+    wrapper.addEventListener("touchstart", e => {
+        e.preventDefault()
+        isDragging = true;
+        startX = e.clientX - originX;
+        startY = e.clientY - originY;
+    });
+    window.addEventListener("touchend", () => {
+        isDragging = false;
+    });
+    window.addEventListener("touchmove", e => {
+        if (!isDragging) return;
+        e.preventDefault()
+        originX = e.clientX - startX;
+        originY = e.clientY - startY;
+        updateInputs()
+        updateTransform();
+        drawConnections();
+    });
     window.addEventListener("keydown", e => {
         if (!!isDragging || e.keyCode !== 69) return;
         originX = 0;
