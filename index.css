@@ -177,6 +177,7 @@ button.mod-button:hover {
     width: 35px;
     height: 35px;
     border: 2px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
 .zoom-options .zoom-buttons button#out {
     border-radius: 8px 0px 0px 8px;
