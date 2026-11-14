@@ -228,19 +228,19 @@ document.addEventListener("DOMContentLoaded", () => {
         drawConnections();
     });
     wrapper.addEventListener("touchstart", e => {
-        e.preventDefault();
+        //e.preventDefault();
         let touch = e.changedTouches[0];
         isDragging = true;
         startX = touch.clientX - originX;
         startY = touch.clientY - originY;
     });
     window.addEventListener("touchend", e => {
-        e.preventDefault();
+        //e.preventDefault();
         isDragging = false;
     });
     window.addEventListener("touchmove", e => {
         if (!isDragging) return;
-        e.preventDefault();
+        //e.preventDefault();
         let touch = e.changedTouches[0];
         originX = touch.clientX - startX;
         originY = touch.clientY - startY;
