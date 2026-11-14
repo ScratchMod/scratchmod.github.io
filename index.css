@@ -9,7 +9,6 @@ body {
     text-align: center;
     background: #f9f9f9;
     color: black;
-    touch-action: none;
 }
 
 header {
