@@ -35,7 +35,7 @@ const smDarkMode = [
     'KOSHINOawa',
 ].map(fromHardcodedGithub);
 
-export default {
+export {
     smDevelopers: shuffle(smDevelopers),
     smSuggestors: shuffle(smSuggestors),
     smDarkMode: shuffle(smDarkMode)

@@ -123,8 +123,8 @@ button.mod-button:hover {
     left: 0%;
     margin: 5px;
     display: inline-block;
-    width: 185px;
-    height: 200px;
+    width: 250px;
+    height: 185px;
     border-radius: 8px;
     z-index: 5;
     background-color: hsl(53, 83%, 54%);
