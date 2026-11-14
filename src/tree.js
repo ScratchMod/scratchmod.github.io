@@ -86,7 +86,7 @@ Mods.Penguinmod.children = {
   Plungermod: Mods.Plungermod,
   Orangemod: Mods.Orangemod,
   Falconmod: Mods.Falconmod,
-  //Zypheramod: Mods.Zypheramod,
+  Zypheramod: Mods.Zypheramod,
   Espressoblocks: Mods.Espressoblocks,
   ZincCoding: Mods.ZincCoding,
   FireMod: Mods.FireMod,

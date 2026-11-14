@@ -118,11 +118,12 @@ let CrabsProgramming = {
     "children": {}
 }
 
-/*let Zypheramod = {
+let Zypheramod = {
     "name": "Zyphera-mod",
     "link": "https://zyphera-mod.github.io/editor.html",
-    "children": {}
-}*/
+    "children": {},
+    "disabled": true
+}
 
 let Falconmod = {
     "name": "FalconMod",
@@ -133,7 +134,8 @@ let Falconmod = {
 let Shredmod = {
     "name": "ShredMod",
     "link": "https://shredmod.is-an.app/editor.html",
-    "children": {}
+    "children": {},
+    "disabled": true
 }
 
 let Nuclearmod = {
@@ -163,7 +165,8 @@ let RemixWarp = {
 let Espressoblocks = {
     "name": "EspressoBlocks",
     "link": "https://espressoblocks.com/editor.html",
-    "children": {}
+    "children": {},
+    "disabled": true
 }
 
 let Hiddenblocks = {
@@ -602,7 +605,7 @@ const Mods = {
     ZincCoding,
     ZtEngine,
     Zippr,
-    //Zypheramod
+    Zypheramod
 }
 
 export default Mods

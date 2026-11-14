@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = document.createElement("button");
         btn.textContent = mod.name;
         btn.className = "mod-button";
+        if (!!mod.disabled) btn.style.color = "#bfbfbf";
 
         const scale = 1 - 0.15 * depth;
         btn.style.fontSize = 18 * scale + "px";
@@ -65,9 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const link = document.createElement("a");
-        link.href = mod.link;
-        link.target = "_blank";
-        link.textContent = mod.name;
+        if (!!mod.disabled) {
+            link.textContent = "The editor of this mod is inaccessible or no longer exists.";
+        } else {
+            link.href = mod.link;
+            link.target = "_blank";
+            link.textContent = mod.name;
+        }
 
         info.appendChild(favicon);
         info.appendChild(link);
