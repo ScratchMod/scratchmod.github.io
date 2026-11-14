@@ -3,7 +3,8 @@ import "./tree.js";
 import darkTheme from "./theme/dark.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    let isEnableDarkMode = localStorage.getItem("sm-theme") == "dark" || localStorage.getItem("sm-theme") == null && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const savedTheme = localStorage.getItem("sm-theme");
+    let isEnableDarkMode = savedTheme == "dark" || savedTheme == null && window.matchMedia("(prefers-color-scheme: dark)").matches;
     const darkStyle = document.createElement("style");
     darkStyle.className = "darkStyle";
     darkStyle.textContent = isEnableDarkMode ? darkTheme : "";
@@ -190,11 +191,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const wrapper = document.getElementById("tree-wrapper");
 
+    const xInput = document.querySelector(".upper-coords-inputs .lower-coords-input input#x");
+    const yInput = document.querySelector(".upper-coords-inputs .lower-coords-input input#y");
+    const zoomInput = document.querySelector(".zoom-options .zoom-input input#zoom");
+
+    const zoomOut = document.querySelector(".zoom-options .zoom-buttons button#out");
+    const zoomReset = document.querySelector(".zoom-options .zoom-buttons button#reset");
+    const zoomIn = document.querySelector(".zoom-options .zoom-buttons button#in");
+
     wrapper.addEventListener("wheel", e => {
         e.preventDefault();
         const zoomAmount = -e.deltaY * 0.001;
         scale += zoomAmount;
         scale = Math.min(Math.max(0.2, scale), 3);
+        zoomInput.value = scale * 100;
         updateTransform();
     });
 
@@ -212,6 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isDragging) return;
         originX = e.clientX - startX;
         originY = e.clientY - startY;
+        xInput.value = originX;
+        yInput.value = originY;
         updateTransform();
         drawConnections();
     });
@@ -221,6 +233,41 @@ document.addEventListener("DOMContentLoaded", () => {
         originY = 0;
         updateTransform();
         drawConnections();
+    });
+
+    xInput.addEventListener("input", e => {
+        originX = xInput.value;
+        updateTransform();
+        drawConnections();
+    });
+    yInput.addEventListener("input", e => {
+        originY = yInput.value;
+        updateTransform();
+        drawConnections();
+    });
+    zoomInput.addEventListener("input", e => {
+        scale = zoomInput.value / 100
+        scale = Math.min(Math.max(0.2, scale), 3);
+        updateTransform();
+    });
+
+    zoomOut.addEventListener("click", e => {
+        scale = scale -= 0.1
+        scale = Math.min(Math.max(0.2, scale), 3);
+        zoomInput.value = scale * 100;
+        updateTransform();
+    });
+    zoomReset.addEventListener("click", e => {
+        scale = 1
+        scale = Math.min(Math.max(0.2, scale), 3);
+        zoomInput.value = scale * 100;
+        updateTransform();
+    });
+    zoomIn.addEventListener("click", e => {
+        scale = scale += 0.1
+        scale = Math.min(Math.max(0.2, scale), 3);
+        zoomInput.value = scale * 100;
+        updateTransform();
     });
 
     function updateTransform() {

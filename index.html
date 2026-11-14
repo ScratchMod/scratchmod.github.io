@@ -2,121 +2,8 @@
 <html lang="en">
     <head>
         <link rel="shortcut icon" href="https://scratchmod.github.io/favicon.ico?" type="image/x-icon"></link>
+        <link rel="stylesheet" href="index.css" />
         <title>Scratch Mods</title>
-        <style>
-            html, body {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-            }
-
-            body {
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                background: #f9f9f9;
-            }
-
-            header {
-                background-color: hsl(53, 83%, 54%);
-                color: white;
-                text-align: center;
-                padding: 8px 0;
-                font-family: 'Courier New', Courier, monospace;
-            }
-            main {
-                max-width: 600px;
-                margin: auto;
-            }
-            #gap {
-                width: 100%;
-                background-color: transparent;
-            }
-            #tree-wrapper {
-                position: relative;
-                width: 100%;
-                height: 100vh;
-                overflow: auto;
-            }
-            #tree-container {
-                position: relative;
-                display: inline-block;
-                padding: 20px;
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                transform-origin: 0 0;
-                cursor: grab;
-                z-index: 1;
-                width: max-content;
-                height: max-content;
-            }
-            .tree-level {
-                display: flex;
-                justify-content: center;
-                margin-top: 40px;
-            }
-            .mod-node {
-                position: relative;
-                margin: 0 20px;
-                text-align: center;
-            }
-            button.mod-button {
-                border: 2px solid #2a7ae2;
-                background-color: #4a90e2;
-                color: white;
-                border-radius: 8px;
-                cursor: pointer;
-                padding: 12px 20px;
-                font-weight: bold;
-                user-select: none;
-                transition: background-color 0.3s ease;
-            }
-            button.mod-button:hover {
-                background-color: #357abd;
-            }
-            .mod-info {
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                display: none;
-                background: white;
-                border: 1px solid #ddd;
-                padding: 8px 12px;
-                border-radius: 6px;
-                width: 180px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-                z-index: 10;
-            }
-            .mod-info img {
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 8px;
-            }
-            .mod-info a {
-                color: #2a7ae2;
-                text-decoration: none;
-                font-weight: 600;
-            }
-            .mod-info a:hover {
-                text-decoration: underline;
-            }
-            #connections {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: 0;
-            }
-            #switch-theme {
-                position: absolute;
-                top: 5px;
-                left: 5px;
-            }
-        </style>
     </head>
     <body>
         <header>
@@ -129,6 +16,67 @@
                 <svg id="connections">
                     <g id="connections-group"></g>
                 </svg>
+            </div>
+            <div id="tree-settings-container">
+                <div id="tree-settings">
+                    <p>Coordinates:</p>
+                    <div class="upper-coords-inputs">
+                        <div class="lower-coords-input">
+                            <p>x: </p>
+                            <input id="x" type="number">
+                        </div>
+                        <div class="lower-coords-input">
+                            <p>y: </p>
+                            <input id="y" style="text-align: center;border-radius: 15px;height: 35px; width: 50px; border: 2px solid #d5d5d5" type="number">
+                        </div>
+                    </div>
+                    <hr>
+                    <p>Zooming:</p>
+                    <div class="zoom-options">
+                        <div class="zoom-buttons">
+                            <button id="out">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34.6" height="34.6" viewBox="0,0,34.6,34.6">
+                                    <g transform="translate(-222.7,-162.7)">
+                                        <g stroke-miterlimit="10">
+                                            <path d="M222.7,197.3v-34.6h34.6v34.6z" fill-opacity="0.00392" fill="#9966ff" stroke="none" stroke-width="NaN" stroke-linecap="butt"></path>
+                                            <path d="M249.1521,180.57334c0,0.77679 -0.62971,1.4065 -1.4065,1.4065h-15.4912c-0.77679,0 -1.4065,-0.62971 -1.4065,-1.4065v-1.14668c0,-0.77679 0.62971,-1.4065 1.4065,-1.4065h15.4912c0.77679,0 1.4065,0.62971 1.4065,1.4065z" fill="#808080" stroke="none" stroke-width="0" stroke-linecap="butt"></path>
+                                            <path d="M227.1497,180c0,-7.09702 5.75327,-12.8503 12.8503,-12.8503c7.09702,0 12.8503,5.75327 12.8503,12.8503c0,7.09702 -5.75327,12.8503 -12.8503,12.8503c-7.09702,0 -12.8503,-5.75327 -12.8503,-12.8503z" fill="none" stroke="#808080" stroke-width="2.5" stroke-linecap="butt"></path>
+                                            <path d="M252.64875,194.05036l-4.23837,-4.23837" fill="none" stroke="#808080" stroke-width="2.5" stroke-linecap="round"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <button id="reset">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34.6" height="34.6" viewBox="0,0,34.6,34.6">
+                                    <g transform="translate(-222.7,-162.7)">
+                                        <g stroke="none" stroke-miterlimit="10">
+                                            <path d="M222.7,197.3v-34.6h34.6v34.6z" fill-opacity="0.00392" fill="#9966ff" stroke-width="NaN"></path>
+                                            <path d="M251.61579,186.08305c0,0.9859 -0.79923,1.78513 -1.78513,1.78513h-19.66132c-0.9859,0 -1.78513,-0.79923 -1.78513,-1.78513v-1.45535c0,-0.9859 0.79923,-1.78513 1.78513,-1.78513h19.66132c0.9859,0 1.78513,0.79923 1.78513,1.78513z" fill="#808080" stroke-width="0"></path>
+                                            <path d="M251.61579,175.37231c0,0.9859 -0.79923,1.78513 -1.78513,1.78513h-19.66132c-0.9859,0 -1.78513,-0.79923 -1.78513,-1.78513v-1.45535c0,-0.9859 0.79923,-1.78513 1.78513,-1.78513h19.66132c0.9859,0 1.78513,0.79923 1.78513,1.78513z" fill="#808080" stroke-width="0"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <button id="in">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34.6" height="34.6" viewBox="0,0,34.6,34.6">
+                                    <g transform="translate(-222.7,-162.7)">
+                                        <g stroke-miterlimit="10">
+                                            <path d="M222.7,197.3v-34.6h34.6v34.6z" fill-opacity="0.00392" fill="#9966ff" stroke="none" stroke-width="NaN" stroke-linecap="butt"></path>
+                                            <path d="M239.42666,189.1521c-0.77679,0 -1.4065,-0.62971 -1.4065,-1.4065v-15.4912c0,-0.77679 0.62971,-1.4065 1.4065,-1.4065h1.14668c0.77679,0 1.4065,0.62971 1.4065,1.4065v15.4912c0,0.77679 -0.62971,1.4065 -1.4065,1.4065z" fill="#808080" stroke="none" stroke-width="0" stroke-linecap="butt"></path>
+                                            <path d="M249.1521,180.57334c0,0.77679 -0.62971,1.4065 -1.4065,1.4065h-15.4912c-0.77679,0 -1.4065,-0.62971 -1.4065,-1.4065v-1.14668c0,-0.77679 0.62971,-1.4065 1.4065,-1.4065h15.4912c0.77679,0 1.4065,0.62971 1.4065,1.4065z" fill="#808080" stroke="none" stroke-width="0" stroke-linecap="butt"></path>
+                                            <path d="M227.1497,180c0,-7.09702 5.75327,-12.8503 12.8503,-12.8503c7.09702,0 12.8503,5.75327 12.8503,12.8503c0,7.09702 -5.75327,12.8503 -12.8503,12.8503c-7.09702,0 -12.8503,-5.75327 -12.8503,-12.8503z" fill="none" stroke="#808080" stroke-width="2.5" stroke-linecap="butt"></path>
+                                            <path d="M252.64875,194.05036l-4.23837,-4.23837" fill="none" stroke="#808080" stroke-width="2.5" stroke-linecap="round"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="zoom-input">
+                            <p>%: </p>
+                            <input id="zoom" type="number">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script type="module" src="src/index.js"></script>
