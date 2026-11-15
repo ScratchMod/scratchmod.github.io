@@ -262,13 +262,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     xInput.addEventListener("input", e => {
-        originX = xInput.value * scale;
+        originX = xInput.value / scale;
         updateInputs()
         updateTransform();
         drawConnections();
     });
     yInput.addEventListener("input", e => {
-        originY = yInput.value * scale;
+        originY = yInput.value / scale;
         updateInputs()
         updateTransform();
         drawConnections();
@@ -310,8 +310,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateInputs() {
-        xInput.value = Math.round(originX / scale);
-        yInput.value = Math.round(originY / scale);
+        xInput.value = Math.round(originX * scale);
+        yInput.value = Math.round(originY * scale);
         zoomInput.value = Math.round(scale * 100);
     }
 
