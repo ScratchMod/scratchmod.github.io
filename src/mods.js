@@ -519,6 +519,10 @@ let BreadMod = {
     "children": {}
 }
 
+let KeteyIDE = {
+    "name": "Ketey IDE",
+    "link": "https://ketey-ide.github.io/editor.html",
+    "children": {}
 const Mods = {
     AbsoluteMod,
     Adacraft,
@@ -561,6 +565,7 @@ const Mods = {
     Hiddenblocks,
     HiddenblocksScratch,
     Itch,
+    KeteyIDE,
     LearningML,
     LibreKitten,
     Lubot,
